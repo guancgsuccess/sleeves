@@ -1,0 +1,180 @@
+#order-body{
+    width: 1100px;
+    height: 760px;
+    margin: 0px auto;
+    background: #f5f5f5;
+    position: relative;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.address{
+    width: 950px;
+    height: 150px;
+    background: white;
+    position: absolute;
+    top: 35px;
+    left: 70px;
+}
+
+.client-info{
+    width: 1098px;
+    height: 40px;
+}
+
+.client-info span{
+    display: inline-block;
+    width: 300px;
+    height: 27px;
+    margin: 15px 0px 0px 60px;
+}
+
+.client-info i{
+    font-style: normal;
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    margin: 15px 0px 0px 300px;
+}
+
+.address-detail{
+    width: 700px;
+    height: 70px;
+    margin: 15px 0px 0px 60px;
+}
+
+.address-detail span{
+    display: inline-block;
+    width: 700px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.address-detail p{
+    display: inline-block;
+    width: 300px;
+    height: 25px;
+    margin: 0px 0px 0px 30px;
+    color: darkorange;
+    font-size: 14px;
+}
+
+b{
+    font-size: 14px;
+}
+
+
+/* ----------------------------------- */
+
+.design-plan{
+    width: 950px;
+    height: 340px;
+    background: white;
+    position: absolute;
+    top: 210px;
+    left: 70px;
+}
+
+.company-info{
+    width: 950px;
+    height: 100px;
+    border-bottom: 1px dotted gray;
+}
+
+.company-info img{
+    width: 90px;
+    height: 90px;
+    border-radius: 80px;
+    margin: 5px 0px 0px 60px;
+    float: left;
+    border: 1px solid lightgray;
+}
+
+.company-info h3{
+    display: inline-block;
+    width: 250px;
+    height: 30px;
+    font-size: 20px;
+    margin: 35px 0px 0px 20px;
+}
+
+.design-info{
+    width: 800px;
+    height: 400px;
+}
+
+.design-info img{
+    width: 210px;
+    height: 210px;
+    margin: 20px 0px 0px 65px;
+    float: left;
+}
+
+.design-info span{
+    display: inline-block;
+    width: 400px;
+    height: 35px;
+    font-size: 18px;
+    color: #000;
+    margin: 20px 0px 0px 20px;
+}
+
+.designDetail{
+    float: left;
+    width: 200px;
+    height: 180px;
+    margin: 0px 0px 0px 20px;
+}
+
+.designDetail span{
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+    color: gray;
+    text-align: center;
+    line-height: 35px;
+}
+
+label{
+    display: inline-block;
+    width: 60px;
+    height: 25px;
+    margin:155px 0px 0px 220px;
+    font-size: 17px;
+    color: orangered;
+}
+
+/* ------------------------------------- */
+.submit-order{
+    width: 950px;
+    height: 100px;
+    background: white;
+    position: absolute;
+    top: 650px;
+    left: 70px;
+}
+
+.submit-order h4{
+    display: inline-block;
+    width: 83px;
+    height: 33px;
+    margin: 30px 0px 0px 580px;
+    font-size: 18px;
+}
+
+.submit-order span{
+    color: orangered;
+    font-weight: bold;
+    display: inline-block;
+    width: 110px;
+    height: 33px;
+}
+
+.submit-order button{
+    border: none;
+    width: 140px;
+    height: 40px;
+    background: #2B90D9;
+    color: white;
+}

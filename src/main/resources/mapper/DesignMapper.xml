@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.DesignMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Design">
+    <id column="design_id" jdbcType="INTEGER" property="designId" />
+    <result column="design_company_id" jdbcType="INTEGER" property="designCompanyId" />
+    <result column="design_name" jdbcType="VARCHAR" property="designName" />
+    <result column="design_designer_id" jdbcType="INTEGER" property="designDesignerId" />
+    <result column="design_house_type" jdbcType="VARCHAR" property="designHouseType" />
+    <result column="design_style" jdbcType="VARCHAR" property="designStyle" />
+    <result column="design_area" jdbcType="DOUBLE" property="designArea" />
+    <result column="design_price" jdbcType="DOUBLE" property="designPrice" />
+    <result column="design_ duration" jdbcType="INTEGER" property="designDuration" />
+    <result column="design_introduction" jdbcType="VARCHAR" property="designIntroduction" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="VARCHAR" property="field2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    design_id, design_company_id, design_name, design_designer_id, design_house_type, 
+    design_style, design_area, design_price, `design_ duration`, design_introduction, 
+    field1, field2
+  </sql>
+
+  <!-- 根据公司ID查询-->
+  <select id="selectDesignByCompanyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from design
+    where design_company_id = #{designCompanyId,jdbcType=INTEGER}
+    limit 0,6
+  </select>
+
+  <!-- 根据公司Id分页查询所有方案-->
+  <select id="selectDesignByPage" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+      select d.*
+      from design d JOIN company c
+      ON d.design_company_id = c.company_id
+      where c.company_id = #{companyId,jdbcType=INTEGER}
+      limit #{startRecord},#{pageSize}
+  </select>
+  <!-- 根据公司Id查询方案个数-->
+  <select id="selectCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      select count(d.design_id)
+      from design d JOIN company c
+      ON d.design_company_id = c.company_id
+      where c.company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+
+ <!--根据设计师id查询方案个数-->
+  <select id="selectDesignCountByDesignerId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+     	SELECT count(den.design_id)
+	    FROM designer des JOIN design den
+	    ON des.designer_id = den.design_designer_id
+	    where des.designer_id=#{designerId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectDesignByDesignerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	SELECT
+        <include refid="Base_Column_List" />
+	    FROM designer des JOIN design den
+	    ON des.designer_id = den.design_designer_id
+	    where  des.designer_id=#{designerId,jdbcType=INTEGER}
+  </select>
+
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from design
+    where design_id = #{designId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 2.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from design
+    where design_id = #{designId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 3.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.Design">
+    insert into design (design_id, design_company_id, design_name, 
+      design_designer_id, design_house_type, design_style, 
+      design_area, design_price, `design_ duration`, 
+      design_introduction, field1, field2
+      )
+    values (#{designId,jdbcType=INTEGER}, #{designCompanyId,jdbcType=INTEGER}, #{designName,jdbcType=VARCHAR}, 
+      #{designDesignerId,jdbcType=INTEGER}, #{designHouseType,jdbcType=VARCHAR}, #{designStyle,jdbcType=VARCHAR}, 
+      #{designArea,jdbcType=DOUBLE}, #{designPrice,jdbcType=DOUBLE}, #{designDuration,jdbcType=INTEGER}, 
+      #{designIntroduction,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <!-- 4.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Design">
+    update design
+    set design_company_id = #{designCompanyId,jdbcType=INTEGER},
+      design_name = #{designName,jdbcType=VARCHAR},
+      design_designer_id = #{designDesignerId,jdbcType=INTEGER},
+      design_house_type = #{designHouseType,jdbcType=VARCHAR},
+      design_style = #{designStyle,jdbcType=VARCHAR},
+      design_area = #{designArea,jdbcType=DOUBLE},
+      design_price = #{designPrice,jdbcType=DOUBLE},
+      `design_ duration` = #{designDuration,jdbcType=INTEGER},
+      design_introduction = #{designIntroduction,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR}
+    where design_id = #{designId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Design">
+    insert into design
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="designId != null">
+        design_id,
+      </if>
+      <if test="designCompanyId != null">
+        design_company_id,
+      </if>
+      <if test="designName != null">
+        design_name,
+      </if>
+      <if test="designDesignerId != null">
+        design_designer_id,
+      </if>
+      <if test="designHouseType != null">
+        design_house_type,
+      </if>
+      <if test="designStyle != null">
+        design_style,
+      </if>
+      <if test="designArea != null">
+        design_area,
+      </if>
+      <if test="designPrice != null">
+        design_price,
+      </if>
+      <if test="designDuration != null">
+        `design_ duration`,
+      </if>
+      <if test="designIntroduction != null">
+        design_introduction,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+      <if test="field2 != null">
+        field2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="designId != null">
+        #{designId,jdbcType=INTEGER},
+      </if>
+      <if test="designCompanyId != null">
+        #{designCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="designName != null">
+        #{designName,jdbcType=VARCHAR},
+      </if>
+      <if test="designDesignerId != null">
+        #{designDesignerId,jdbcType=INTEGER},
+      </if>
+      <if test="designHouseType != null">
+        #{designHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="designStyle != null">
+        #{designStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="designArea != null">
+        #{designArea,jdbcType=DOUBLE},
+      </if>
+      <if test="designPrice != null">
+        #{designPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="designDuration != null">
+        #{designDuration,jdbcType=INTEGER},
+      </if>
+      <if test="designIntroduction != null">
+        #{designIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Design">
+    update design
+    <set>
+      <if test="designCompanyId != null">
+        design_company_id = #{designCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="designName != null">
+        design_name = #{designName,jdbcType=VARCHAR},
+      </if>
+      <if test="designDesignerId != null">
+        design_designer_id = #{designDesignerId,jdbcType=INTEGER},
+      </if>
+      <if test="designHouseType != null">
+        design_house_type = #{designHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="designStyle != null">
+        design_style = #{designStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="designArea != null">
+        design_area = #{designArea,jdbcType=DOUBLE},
+      </if>
+      <if test="designPrice != null">
+        design_price = #{designPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="designDuration != null">
+        `design_ duration` = #{designDuration,jdbcType=INTEGER},
+      </if>
+      <if test="designIntroduction != null">
+        design_introduction = #{designIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where design_id = #{designId,jdbcType=INTEGER}
+  </update>
+</mapper>

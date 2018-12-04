@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#personCenter-body{
+    width: 1100px;
+    height: 910px;
+    margin: 0px auto;
+    background: #f8f8f8;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.person-title{
+    width: 1100px;
+    height: 100px;
+    background: white;
+    border-bottom: 2px solid #01af63;
+}
+
+.logo-img{
+    width: 350px;
+    height: 80px;
+    border-right: 1px solid #eee;
+    float: left;
+    margin: 10px 0px 0px 50px;
+}
+
+.logo-img img{
+    width: 300px;
+    height: 80px;
+}
+
+.person-title span{
+    display: inline-block;
+    height: 55px;
+    font-size: 20px;
+    color: #333;
+    line-height: 55px;
+    margin: 20px 0px 0px 30px;
+}
+
+.person-body{
+    width: 1100px;
+    height: 800px;
+}
+
+.person-left-title{
+    width: 400px;
+    height: 40px;
+    margin: 10px 0px 0px 50px;
+}
+
+.person-left-title a{
+    text-decoration: none;
+    color: #999;
+    font-size: 13px;
+    line-height:  40px;
+}
+
+.person-left-title span{
+    color: #333;
+    font-size: 13px;
+    line-height:  40px;
+}
+/* ------------------------------ */
+.person-left{
+    width: 700px;
+    height: 400px;
+    float: left;
+    margin: 10px 0px 0px 50px;
+    border: 1px solid #d9e1e8;
+    background: white;
+}
+
+.personInfo-title{
+    width: 660px;
+    height: 70px;
+    border-bottom: 1px dotted gray;
+    margin: 5px 0px 0px 20px;
+}
+
+.personInfo-title span{
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    float: left;
+    border-left: 2px #00af63 solid ;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin: 35px 0px 0px 0px;
+}
+
+.personInfo-title a{
+    text-decoration: none;
+    color: orangered;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin: 40px 0px 0px 395px;
+}
+
+.person-left ul{
+    width: 660px;
+    height: 40px;
+    list-style: none;
+    background-color: #f8f8f8;
+    margin-left: 20px;
+}
+
+.person-left ul li{
+    float: left;
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}
+

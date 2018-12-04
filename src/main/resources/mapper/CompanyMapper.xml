@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Company">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_license_no" jdbcType="VARCHAR" property="companyLicenseNo" />
+    <result column="company_password" jdbcType="VARCHAR" property="companyPassword" />
+    <result column="company_legal_person" jdbcType="VARCHAR" property="companyLegalPerson" />
+    <result column="company_telephone" jdbcType="BIGINT" property="companyTelephone" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="company_location" jdbcType="VARCHAR" property="companyLocation" />
+    <result column="company_status" jdbcType="INTEGER" property="companyStatus" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="VARCHAR" property="field2" />
+  </resultMap>
+
+  <resultMap id="CompanyImgMap" type="com.chixing.entity.RenderingImg">
+    <id column="rendering_img_id" jdbcType="INTEGER" property="renderingImgId" />
+    <result column="rendering_id" jdbcType="INTEGER" property="renderingId" />
+    <result column="rendering_images_path" jdbcType="VARCHAR" property="renderingImagesPath" />
+    <result column="rendering_sortno" jdbcType="INTEGER" property="renderingSortno" />
+    <result column="fileds1" jdbcType="VARCHAR" property="fileds1" />
+    <result column="fileds2" jdbcType="INTEGER" property="fileds2" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    company_id, company_name, company_license_no, company_password, company_legal_person, 
+    company_telephone, company_email, company_location, company_status, field1, field2
+  </sql>
+
+  <sql id="Base_Column_Li">
+    company_id, company_name, company_license_no, company_password, company_legal_person,
+    company_telephone, company_email, company_location, company_status
+  </sql>
+
+  <select id="selectEightCompany" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM company
+    limit 0,8
+  </select>
+
+  <!-- 根据条件查询公司 -->
+  <select id="selectCompanyBySearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+  SELECT *
+  FROM company
+  where company_name LIKE CONCAT('%',#{news,jdbcType=VARCHAR},'%') or company_location like CONCAT('%',#{news,jdbcType=VARCHAR},'%')
+</select>
+
+  <!-- 根据公司所在地查询公司 -->
+  <select id="selectCompanyByLocation" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM company
+    where company_location=#{cityName,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+
+
+  <!-- 根据公司名字查询-->
+  <select id="selectCompanyByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from company
+    where company_name = #{companyName,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 2.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 3.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.Company">
+    insert into company (company_id, company_name, company_license_no,
+      company_password, company_legal_person, company_telephone,
+      company_email, company_location, company_status,
+      field1, field2)
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyLicenseNo,jdbcType=VARCHAR},
+      #{companyPassword,jdbcType=VARCHAR}, #{companyLegalPerson,jdbcType=VARCHAR}, #{companyTelephone,jdbcType=BIGINT},
+      #{companyEmail,jdbcType=VARCHAR}, #{companyLocation,jdbcType=VARCHAR}, #{companyStatus,jdbcType=INTEGER},
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR})
+  </insert>
+
+  <!-- 4.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Company">
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_license_no = #{companyLicenseNo,jdbcType=VARCHAR},
+      company_password = #{companyPassword,jdbcType=VARCHAR},
+      company_legal_person = #{companyLegalPerson,jdbcType=VARCHAR},
+      company_telephone = #{companyTelephone,jdbcType=BIGINT},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_location = #{companyLocation,jdbcType=VARCHAR},
+      company_status = #{companyStatus,jdbcType=INTEGER},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+
+  <!-- 5.获得公司图片-->
+  <select id="selectCompanyImg" parameterType="java.lang.Integer" resultMap="CompanyImgMap">
+    select rendering_images_path
+    FROM company c JOIN design d
+    ON c.company_id = d.design_company_id
+    JOIN rendering r
+    ON d.design_id = r.rendering_design_id
+    JOIN rendering_img ri
+    ON r.rendering_id = ri.rendering_id
+    WHERE c.company_id=#{companyId,jdbcType=INTEGER}
+    LIMIT 0,5
+  </select>
+  <!-- 获得公司方案-->
+
+  <!--根据方案id查询到公司-->
+  <select id="selectCompanyByDesignId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_Li" />
+    FROM design JOIN company
+    ON design.design_company_id = company.company_id
+    where design.design_id=#{designId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 根据设计师id查询公司  -->
+  <select id="selectCompanyByDesignerId" parameterType="java.lang.Integer" resultType="java.lang.String">
+    SELECT DISTINCT design1.company1_name
+    FROM designer desn JOIN  (SELECT com.company_id,com.company_name company1_name,des.design_id,des.design_designer_id designer1_id
+    FROM company com JOIN design des
+    WHERE com.company_id=des.design_company_id)design1
+    ON desn.designer_id=design1.designer1_id
+    where desn.designer_id=#{designerId,jdbcType=INTEGER}
+  </select>
+
+
+  <!-- 查询出所有公司-->
+  <select id="selectAllCompany" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from company
+    limit #{startRecord},#{pageSize}
+  </select>
+
+  <!-- 查询设计案例总数-->
+  <select id="selectCountDesign" parameterType="java.lang.Integer" resultType="java.lang.Integer" >
+    select count(design_id)
+    FROM company join design
+    on company_id = design_company_id
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 查询公司个数(总记录数)-->
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(company_id)
+    from company
+  </select>
+
+  <!-- 多条件动态查询-->
+  <select id="selectCompanyWithConditions" parameterType="java.util.HashMap" resultType="com.chixing.entity.Company" >
+    select  DISTINCT co.company_id,co.company_name, co.company_license_no, co.company_password, co.company_legal_person, co.company_telephone,
+    co.company_email, co.company_location, co.company_status
+    FROM company co JOIN design d
+    ON co.company_id = d.design_company_id
+    <where>
+      <if test="designStyle != null">
+        d.design_style = #{designStyle,jdbcType=VARCHAR}
+      </if>
+      <if test="companyLocation != null">
+        and co.company_location = #{companyLocation,jdbcType=VARCHAR}
+      </if>
+      <if test="minPrice != null">
+        and d.design_price >= #{minPrice,jdbcType=DOUBLE}
+      </if>
+      <if test="maxPrice != null">
+        and d.design_price &lt;= #{maxPrice,jdbcType=DOUBLE}
+      </if>
+    </where>
+    limit #{startRecord},#{pageSize}
+
+  </select>
+
+  <!-- 查询符合条件的公司个数-->
+  <select id="selectCountWithConditions" parameterType="java.util.HashMap" resultType="java.lang.Integer" >
+    SELECT count(tab.num)
+    FROM (SELECT count(design_company_id) num
+          FROM company c JOIN design d
+          on c.company_id = d.design_company_id
+          <where>
+            <if test="designStyle != null">
+              d.design_style = #{designStyle,jdbcType=VARCHAR}
+            </if>
+            <if test="companyLocation != null">
+              and c.company_location = #{companyLocation,jdbcType=VARCHAR}
+            </if>
+
+            <if test="minPrice != null ">
+              and d.design_price >= #{minPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="maxPrice != null ">
+              and d.design_price &lt;= #{maxPrice,jdbcType=DOUBLE}
+            </if>
+          </where>
+          GROUP BY d.design_company_id) tab
+
+  </select>
+
+  <select id="selectThreeCompany" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM company
+    limit 5,3
+  </select>
+
+  <!-- 根据客户id查询该客户收藏过公司的信息 -->
+  <select id="selectCompanyByClientId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      SELECT com.company_id,com.company_name,com.company_password
+      FROM company_collection coll JOIN company com
+      ON coll.company_id=com.company_id
+      where coll.client_id=#{clientId,jdbcType=INTEGER} AND coll.company_collection_status=1
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Company">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyLicenseNo != null">
+        company_license_no,
+      </if>
+      <if test="companyPassword != null">
+        company_password,
+      </if>
+      <if test="companyLegalPerson != null">
+        company_legal_person,
+      </if>
+      <if test="companyTelephone != null">
+        company_telephone,
+      </if>
+      <if test="companyEmail != null">
+        company_email,
+      </if>
+      <if test="companyLocation != null">
+        company_location,
+      </if>
+      <if test="companyStatus != null">
+        company_status,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+      <if test="field2 != null">
+        field2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLicenseNo != null">
+        #{companyLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPassword != null">
+        #{companyPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLegalPerson != null">
+        #{companyLegalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTelephone != null">
+        #{companyTelephone,jdbcType=BIGINT},
+      </if>
+      <if test="companyEmail != null">
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null">
+        #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStatus != null">
+        #{companyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Company">
+    update company
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLicenseNo != null">
+        company_license_no = #{companyLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPassword != null">
+        company_password = #{companyPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLegalPerson != null">
+        company_legal_person = #{companyLegalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTelephone != null">
+        company_telephone = #{companyTelephone,jdbcType=BIGINT},
+      </if>
+      <if test="companyEmail != null">
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null">
+        company_location = #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStatus != null">
+        company_status = #{companyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>

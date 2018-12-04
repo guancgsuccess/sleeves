@@ -1,0 +1,328 @@
+a{
+    text-decoration: none;
+}
+
+#company-body{
+    width: 1100px;
+    height: 1352px;
+    margin: 0px auto;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+/* ------------------------- */
+#major-body{
+    width: 1098px;
+    height: 1270px;
+    background: #f5f5f5;
+}
+
+.left{
+    width: 800px;
+    height: 1270px;
+    float: left;
+    margin-left: -280px;
+}
+
+.company-title{
+    width: 800px;
+    height: 50px;
+    padding-left: 30px;
+}
+
+.company-title ul{
+    list-style: none;
+}
+
+.company-title ul li{
+    width: 100px;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+}
+
+.company-title ul li a{
+    text-decoration: none;
+    color: gray;
+}
+
+
+#filter
+{
+    width:800px;
+    height:150px;
+    margin-right:auto;
+    font-size:16px;
+    color: black;
+    background-color: white;
+}
+
+#filter dl
+{
+    padding-left: 20px;
+    margin-bottom:0;
+    clear:both;
+}
+
+#filter dt,dd
+{
+    display:block;
+    float:left;
+    width:auto;
+    padding:10px;
+    margin:3px 0;
+}
+
+#filter dt
+{
+    height:14px;
+    padding-bottom:4px;
+    font-weight:bold;
+
+}
+
+#filter dd
+{
+    color:black;
+    margin-right:8px;
+}
+
+#filter a
+{
+    cursor:pointer;
+}
+
+.seling
+{
+    background-color: #3ac569;
+    color:#FFFFFF;
+}
+
+.seled
+{
+    background-color: #3ac569;
+    color:#FFFFFF;
+}
+
+
+.company-info{
+    width: 799px;
+    height: 280px;
+    background: white;
+    margin-top: 40px;
+}
+
+#allCompany .company-info a,#allCompany .company-images a{
+    color: black;
+    text-decoration: none;
+}
+
+.company-name{
+    width: 705px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 0px 0px 27px;
+}
+
+.company-info  label{
+    width: 60px;
+    height: 30px;
+    float: left;
+}
+
+.phone{
+    width: 170px;
+    height: 35px;
+    float: left;
+    border-radius: 52px;
+    margin: -40px 0px 0px 590px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 22px;
+    font-family: simhei;
+    color: black;
+}
+
+.phone img{
+    width: 18px;
+    height: 18px;
+    margin-top: -5px;
+}
+
+.company-images{
+    width: 800px;
+    height: 290px;
+    margin: 10px 0px 0px 0px;
+}
+
+
+
+.company-images img{
+    width: 187px;
+    height: 180px;
+    margin-left: 10px;
+    float: left;
+}
+
+/* ------------分页------------- */
+.page-split{
+    width: 825px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.page-split .one-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 120px;
+}
+
+.one-span a , .first-span a, .three-span a , .finally-span a , .page-split .two-span b a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-split .first-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span{
+    display: block;
+    width: 125px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span label{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    float: left;
+
+}
+
+.page-split .two-span  b{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: -15px;
+}
+
+.page-split .two-span  b a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.page-split .three-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 5px;
+}
+
+.page-split .finally-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 20px;
+}
+
+.page-split .four-span{
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .page-input{
+    width: 70px;
+    height: 25px;
+    margin: 10px 0px 0px 6px;
+}
+
+
+.page-split .page-button{
+    width: 100px;
+    height: 27px;
+    border: none;
+    background: #3AC569;
+    border-radius: 15px;
+    margin: 10px 0px 0px 20px;
+}
+
+
+
+
+/* --------------右边----------------- */
+.right{
+    width: 275px;
+    height: 661px;
+    float: left;
+    margin: 65px 0px 0px 12px;
+    background-color: white;
+}
+
+.right ul{
+    width: 270px;
+    height: 600px;
+    list-style: none;
+}
+
+.name-sort{
+    width: 180px;
+    height: 60px;
+    font-size: 25px;
+    margin-left: 45px;
+    line-height: 60px;
+}
+.name-sort img{
+    width: 20px;
+    height: 20px;
+}
+
+.right ul li{
+    width: 270px;
+    height: 100px;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.right ul li a{
+    text-decoration: none;
+}
+
+
+.right ul li img{
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+    margin-top: 15px;
+    border-radius: 45px;
+}
+
+.right ul li span{
+    display: inline-block;
+    width: 180px;
+    height: 30px;
+    margin: 5px 0px 0px 5px;
+    font-size: 14px;
+    color: black;
+}
+

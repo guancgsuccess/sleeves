@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#main{
+    width: 1100px;
+    margin: 100px auto;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+}
+
+#header{
+    width: 1100px;
+    height: 50px;
+
+}
+
+#header .order{
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 30px;
+    margin-top: 8px;
+
+}
+#content{
+    width: 1100px;
+    height: 237px;
+}
+
+#content .comment{
+    width: 500px;
+    height: 80px;
+    margin-top: 20px;
+    margin-left: 272px;
+    font-size: 37px;
+}
+
+#content .form{
+    width: 1100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+#content .form .phone{
+    width: 500px;
+    height: 30px;
+    margin-left: 400px;
+}
+
+#content .form .money{
+    width: 500px;
+    height: 30px;
+    margin: 20px 0px 0px 400px;
+}
+
+hr{
+    width: 1000px;
+    float: left;
+    margin-left: 50px;
+}
+
+#footer{
+    width: 1100px;
+    height: 50px;
+}
+
+#footer .index,#footer .fastener .sure,#footer .fastener .cancel{
+    display: block;
+    width: 125px;
+    height: 34px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    float: left;
+    line-height: 34px;
+    border: none;
+}
+
+#footer .index{
+    margin: -8px 0px 0px 50px;
+    background: #4f953b;
+}
+
+#footer .fastener{
+    width: 300px;
+    height: 50px;
+    margin-left: 750px;
+    margin-top: 40px;
+}
+
+.btn-primary{
+    width: 130px;
+    height: 33px;
+    margin-left: 30px;
+}
+
+#footer .fastener .cancel{
+    background: orangered;
+}
+
+#footer .fastener .sure{
+    background: #00b9f1;
+    margin-left: 25px;
+}

@@ -1,0 +1,513 @@
+a{
+    text-decoration: none;
+}
+
+body{
+    background: #f5f5f5;
+}
+
+#main{
+    width: 1100px;
+    height: 1740px;
+    margin: 0px auto;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+#main-top{
+    width: 1100px;
+    height: 30px;
+}
+
+#main-top ul{
+    list-style: none;
+    padding-left: 40px;
+}
+
+#main-top ul li{
+    line-height: 30px;
+    float: left;
+    font-size: 14px;
+}
+
+#main-top ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+#main-content{
+    width: 1100px;
+    height: 380px;
+    background-color: white;
+}
+
+#main-left{
+    width: 450px;
+    height: 330px;
+    float: left;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.carousel-inner img{
+    width: 450px;
+    height: 330px;
+}
+
+#main-right{
+    width: 595px;
+    height: 330px;
+    float: right;
+    margin-top: 4px;
+}
+
+#main-right-top{
+    width: 600px;
+    height: 46px;
+    display: inline-block;
+    float: left;
+}
+
+#main-right-top .com-name{
+    font-size: 30px;
+}
+
+#main-right-top .ying{
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #5cdbda;
+    color: white;
+}
+
+#main-right-top .reng{
+    display: inline-block;
+    background-color: #ffad77;
+    color: white;
+}
+
+#main-right-top .bond{
+    margin-left: 10px;
+}
+
+#main-right-top .lable{
+    font-size: 13px;
+}
+
+#main-right-top .collect a{
+    color: black;
+    text-decoration: none;
+}
+/*-------------------------------------------------------------*/
+#main-right-top-next {
+    width: 600px;
+    height: 30px;
+    margin-top: 50px;
+}
+
+#main-right-top-next .company_legal_person{
+    width: 160px;
+    height: 30px;
+    float: left;
+}
+
+#main-right-top-next .person{
+    font-size: 14px;
+}
+
+#main-right-top-next .content{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: simHei;
+}
+
+#main-right-top-next .company_license_no{
+    width: 370px;
+    height: 30px;
+    float: left;
+}
+
+#main-right-top-next .collect{
+    display: inline-block;
+    font-size: 14px;
+}
+
+#main-right-top-next .collect img{
+    width: 15px;
+    height: 15px;
+}
+
+#main-right-middle{
+    width: 600px;
+    height: 70px;
+    margin-top: 30px;
+}
+
+#main-right-middle .plan{
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+#main-right-middle .plan p{
+    margin: 0;
+}
+
+#main-right-middle .plan .number{
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 21px;
+    margin-left: 15px;
+}
+
+#main-right-middle .plan .words{
+    font-size: 16px;
+}
+
+#main-right-address{
+    width: 600px;
+    height: 30px;
+    display: inline-block;
+    float: left;
+    margin-top: 20px;
+}
+
+#main-right-address label{
+    font-size: 15px;
+}
+
+#main-right-address .address{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#main-right-email{
+    width: 600px;
+    height: 30px;
+    display: inline-block;
+    float: left;
+    margin-top: -10px;
+}
+
+#main-right-email label{
+    font-size: 15px;
+}
+
+#main-right-email .email{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#main-right-footer{
+    width: 600px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    margin-top: 25px;
+}
+
+#main-right-footer .order{
+    width: 155px;
+    height: 45px;
+    background-color: #ff5a00;
+    color: white;
+    border: none;
+}
+
+#main-right-footer .phone{
+    width: 155px;
+    height: 45px;
+    border: none;
+    margin-left: 30px;
+}
+
+#main-right-footer .phone img{
+    width: 10px;
+    height: 10px;
+}
+
+#main-footer{
+    width: 1100px;
+    margin-top: 30px;
+    background-color: white;
+}
+
+#main-footer .main-footer-words{
+    width: 1100px;
+    height: 50px;
+}
+
+#main-footer .main-footer-words .order{
+    font-size: 22px;
+    margin-left: 30px;
+}
+
+#main-footer .main-footer-words a{
+    color: black;
+    text-decoration: none;
+    margin-left: 850px;
+}
+
+#main-footer .main-footer-img{
+    width: 1100px;
+    height: 570px;
+    background-color: white;
+}
+
+#main-footer .main-footer-img .card{
+    width: 320px;
+    height: 270px;
+    display: inline;
+    float: left;
+    margin: 10px 0px 0px 30px;
+}
+
+#main-footer .main-footer-img .img-ct{
+    width: 320px;
+    height: 190px;
+}
+
+#main-footer .main-footer-img .img-ct img{
+    width: 318px;
+    height: 190px;
+}
+
+#main-footer .main-footer-img a{
+    color: black;
+    text-decoration: none;
+}
+
+#main-footer .main-footer-img .img-info{
+    width: 280px;
+    height: 65px;
+}
+
+#main-footer .main-footer-img .img-info p{
+    padding: 0;
+    margin-left: 10px;
+}
+
+#main-footer .main-footer-img .img-info .card-name{
+    margin-top: 10px;
+}
+
+#main-footer .main-footer-img .img-info .card-detail{
+    margin-top: 5px;
+    font-size: 13px;
+    color: #999999;
+}
+
+.main-footer-team{
+    width: 1100px;
+    height: 200px;
+    margin-top: 10px;
+}
+
+.main-footer-team .team{
+    width: 1100px;
+    height: 30px;
+    margin-left: 42px;
+}
+
+.main-footer-team .team span{
+    font-size: 22px;
+}
+
+
+.main-footer-team .outerDesign {
+    width: 1100px;
+    height: 150px;
+}
+
+.main-footer-team .desiger{
+    width: 120px;
+    height: 150px;
+    margin-top: 10px;
+    margin-left: 44px;
+    float: left;
+}
+
+.main-footer-team .desiger a{
+    color: black;
+    text-decoration: none;
+}
+
+.main-footer-team .desiger img{
+    width: 100px;
+    height: 100px;
+    border-radius: 48px;
+}
+
+.main-footer-team .desiger .desiger-pro p{
+    padding: 0;
+    margin-left: 18px;
+}
+
+.main-footer-team .desiger .desiger-pro .desiger-pro-order{
+    margin-top: -10px;
+    font-size: 12px;
+}
+
+/*----------------------------评论------------------------------------*/
+.bigComment{
+    width: 1100px;
+    height: 310px;
+    margin-top: 10px;
+}
+
+.a,.b,.comment {border-width: 1px; border-style: solid; padding: 1px;}
+.a {background-color: #F3F3F3; border-color: #FBFBFB;width:830px; height:80px;}
+.b {background-color: #D8D8D8; border-color: #E8E8E8;width:830px; height:80px;}
+.comment {background-color: #FFF; border-color: #BBB; width:830px; height:80px;}
+
+.big{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.detail{
+    width: 890px;
+    height: 50px;
+}
+.detail img{
+    float: left;
+    width: 46px;
+    height: 46px;
+    border-radius: 52px;
+    margin-left: 30px;
+}
+.detail .nickName{
+    width: 200px;
+    height: 30px;
+    float: left;
+    font-size: 17px;
+    color: #00b9f1;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.detail .time{
+    float: left;
+    width: 200px;
+    height: 16px;
+    font-size: 12px;
+    color: silver;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+.comment-title{
+    width: 890px;
+    height: 30px;
+    margin-left: 42px;
+    font-size: 22px;
+}
+.comment-content{
+    width: 827px;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 8em;
+    background: #f5f5f5;
+    font-size: 13px;
+    position: relative;
+}
+
+
+.cor2{border-width:20px;border-color:transparent #f5f5f5 transparent transparent;left:-20px; bottom:7px;}
+/* ------------分页------------- */
+.page-split{
+    width: 825px;
+    height: 50px;
+    margin-top: -5px;
+}
+
+.page-split .one-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 120px;
+}
+
+.one-span a , .first-span a, .three-span a , .finally-span a , .page-split .two-span b a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-split .first-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span{
+    display: block;
+    width: 125px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span label{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    float: left;
+
+}
+
+.page-split .two-span  b{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: -15px;
+}
+
+.page-split .two-span  b a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.page-split .three-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 5px;
+}
+
+.page-split .finally-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 20px;
+}
+
+.page-split .four-span{
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .page-input{
+    width: 70px;
+    height: 25px;
+    margin: 10px 0px 0px 6px;
+}
+
+
+.page-split .page-button{
+    width: 100px;
+    height: 27px;
+    border: none;
+    background: #3AC569;
+    border-radius: 15px;
+    margin: 10px 0px 0px 20px;
+}

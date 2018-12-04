@@ -1,0 +1,83 @@
+.person-right{
+    width: 250px;
+    height: 700px;
+    float: left;
+    margin: -10px 0px 0px 50px;
+}
+
+.client-profile{
+    width: 190px;
+    height: 180px;
+    background: white;
+    margin: 20px 0px 0px 30px;
+}
+
+.client-profile img{
+    width: 130px;
+    height: 130px ;
+    border-radius: 65px;
+    margin: 10px 0px 0px 30px;
+}
+
+.client-profile span{
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin: 5px 0px 0px 70px;
+    color: black;
+    font-size: 14px;
+}
+
+.nav-body{
+    width: 162px;
+    height: 450px;
+    background: white;
+    margin: 20px 0px 0px 45px;
+}
+
+.personCenter{
+    width: 162px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border-top: 1px solid #f8f8f8;
+    border-right: 1px solid #f8f8f8;
+    border-bottom: 1px solid #f8f8f8;
+    border-left: 2px solid #01af63;
+    background-color: #f8f8f8;
+}
+
+.personCenter a{
+    text-decoration: none;
+    color: #01af63;
+    cursor: pointer;
+}
+
+.nav-body ul{
+    list-style: none;
+}
+
+.nav-body ul .first-title{
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #333;
+}
+
+.nav-body ul li{
+    width: 150px;
+    height: 25px;
+    font-size: 13px;
+    text-align: center;
+    margin: 10px 0px 0px 10px;
+}
+
+.nav-body ul li a{
+    text-decoration: none;
+    cursor: pointer;
+    color: gray;
+}
+
+a:hover{
+    color: #01AF63;
+}

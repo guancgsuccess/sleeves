@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.RenderingMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Rendering">
+    <id column="rendering_id" jdbcType="INTEGER" property="renderingId" />
+    <result column="rendering_design_id" jdbcType="INTEGER" property="renderingDesignId" />
+    <result column="rendering_description" jdbcType="VARCHAR" property="renderingDescription" />
+    <result column="rendering_house_type" jdbcType="VARCHAR" property="renderingHouseType" />
+    <result column="rendering_style" jdbcType="VARCHAR" property="renderingStyle" />
+    <result column="rendering_area" jdbcType="REAL" property="renderingArea" />
+    <result column="rendering_praise" jdbcType="INTEGER" property="renderingPraise" />
+    <result column="rendering_status" jdbcType="INTEGER" property="renderingStatus" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="fileds" jdbcType="INTEGER" property="fileds" />
+  </resultMap>
+
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rendering_id, rendering_design_id, rendering_description, rendering_house_type, rendering_style, 
+    rendering_area, rendering_praise, rendering_status, filed1, fileds
+  </sql>
+
+
+  <select id="selectByExample" parameterType="com.chixing.entity.RenderingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rendering
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rendering
+    where rendering_id = #{renderingId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectRenderingAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from rendering
+  </select>
+
+  <select id="selectRenderingAllCount" resultType="java.lang.Integer">
+    select count(rendering_id)
+    from rendering
+  </select>
+
+  <!--分页查询商品 -->
+  <select id="selectRenderingAllByPage" parameterType="com.chixing.util.PageModel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from rendering
+    limit #{startRecord} , #{pageSize}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rendering
+    where rendering_id = #{renderingId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chixing.entity.RenderingExample">
+    delete from rendering
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+
+
+
+  <insert id="insert" parameterType="com.chixing.entity.Rendering">
+    insert into rendering (rendering_id, rendering_design_id, rendering_description, 
+      rendering_house_type, rendering_style, rendering_area, 
+      rendering_praise, rendering_status, filed1, 
+      fileds)
+    values (#{renderingId,jdbcType=INTEGER}, #{renderingDesignId,jdbcType=INTEGER}, #{renderingDescription,jdbcType=VARCHAR}, 
+      #{renderingHouseType,jdbcType=VARCHAR}, #{renderingStyle,jdbcType=VARCHAR}, #{renderingArea,jdbcType=REAL}, 
+      #{renderingPraise,jdbcType=INTEGER}, #{renderingStatus,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, 
+      #{fileds,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chixing.entity.Rendering">
+    insert into rendering
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="renderingId != null">
+        rendering_id,
+      </if>
+      <if test="renderingDesignId != null">
+        rendering_design_id,
+      </if>
+      <if test="renderingDescription != null">
+        rendering_description,
+      </if>
+      <if test="renderingHouseType != null">
+        rendering_house_type,
+      </if>
+      <if test="renderingStyle != null">
+        rendering_style,
+      </if>
+      <if test="renderingArea != null">
+        rendering_area,
+      </if>
+      <if test="renderingPraise != null">
+        rendering_praise,
+      </if>
+      <if test="renderingStatus != null">
+        rendering_status,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="fileds != null">
+        fileds,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="renderingId != null">
+        #{renderingId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingDesignId != null">
+        #{renderingDesignId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingDescription != null">
+        #{renderingDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingHouseType != null">
+        #{renderingHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingStyle != null">
+        #{renderingStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingArea != null">
+        #{renderingArea,jdbcType=REAL},
+      </if>
+      <if test="renderingPraise != null">
+        #{renderingPraise,jdbcType=INTEGER},
+      </if>
+      <if test="renderingStatus != null">
+        #{renderingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="fileds != null">
+        #{fileds,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+
+
+  <select id="countByExample" parameterType="com.chixing.entity.RenderingExample" resultType="java.lang.Long">
+    select count(*) from rendering
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update rendering
+    <set>
+      <if test="record.renderingId != null">
+        rendering_id = #{record.renderingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.renderingDesignId != null">
+        rendering_design_id = #{record.renderingDesignId,jdbcType=INTEGER},
+      </if>
+      <if test="record.renderingDescription != null">
+        rendering_description = #{record.renderingDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.renderingHouseType != null">
+        rendering_house_type = #{record.renderingHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.renderingStyle != null">
+        rendering_style = #{record.renderingStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.renderingArea != null">
+        rendering_area = #{record.renderingArea,jdbcType=REAL},
+      </if>
+      <if test="record.renderingPraise != null">
+        rendering_praise = #{record.renderingPraise,jdbcType=INTEGER},
+      </if>
+      <if test="record.renderingStatus != null">
+        rendering_status = #{record.renderingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.filed1 != null">
+        filed1 = #{record.filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileds != null">
+        fileds = #{record.fileds,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rendering
+    set rendering_id = #{record.renderingId,jdbcType=INTEGER},
+      rendering_design_id = #{record.renderingDesignId,jdbcType=INTEGER},
+      rendering_description = #{record.renderingDescription,jdbcType=VARCHAR},
+      rendering_house_type = #{record.renderingHouseType,jdbcType=VARCHAR},
+      rendering_style = #{record.renderingStyle,jdbcType=VARCHAR},
+      rendering_area = #{record.renderingArea,jdbcType=REAL},
+      rendering_praise = #{record.renderingPraise,jdbcType=INTEGER},
+      rendering_status = #{record.renderingStatus,jdbcType=INTEGER},
+      filed1 = #{record.filed1,jdbcType=VARCHAR},
+      fileds = #{record.fileds,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Rendering">
+    update rendering
+    <set>
+      <if test="renderingDesignId != null">
+        rendering_design_id = #{renderingDesignId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingDescription != null">
+        rendering_description = #{renderingDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingHouseType != null">
+        rendering_house_type = #{renderingHouseType,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingStyle != null">
+        rendering_style = #{renderingStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="renderingArea != null">
+        rendering_area = #{renderingArea,jdbcType=REAL},
+      </if>
+      <if test="renderingPraise != null">
+        rendering_praise = #{renderingPraise,jdbcType=INTEGER},
+      </if>
+      <if test="renderingStatus != null">
+        rendering_status = #{renderingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="fileds != null">
+        fileds = #{fileds,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rendering_id = #{renderingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Rendering">
+    update rendering
+    set rendering_design_id = #{renderingDesignId,jdbcType=INTEGER},
+      rendering_description = #{renderingDescription,jdbcType=VARCHAR},
+      rendering_house_type = #{renderingHouseType,jdbcType=VARCHAR},
+      rendering_style = #{renderingStyle,jdbcType=VARCHAR},
+      rendering_area = #{renderingArea,jdbcType=REAL},
+      rendering_praise = #{renderingPraise,jdbcType=INTEGER},
+      rendering_status = #{renderingStatus,jdbcType=INTEGER},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      fileds = #{fileds,jdbcType=INTEGER}
+    where rendering_id = #{renderingId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectRenderingByConditions" parameterType="com.chixing.entity.Rendering" resultMap="BaseResultMap">
+    SELECT rendering_id,rendering_description, filed1
+    FROM rendering
+    <where>
+      <if test="renderingStyle !=null">
+        rendering_style = #{renderingStyle,jdbcType=VARCHAR}
+      </if>
+      <if test="renderingHouseType !=null">
+        and rendering_house_type = #{renderingHouseType,jdbcType=VARCHAR}
+      </if>
+      <if test="minRenderingArea !=null">
+        and rendering_area >=#{minRenderingArea,jdbcType=REAL}
+      </if>
+      <if test="maxRenderingArea !=null">
+        and rendering_area &lt;=#{maxRenderingArea,jdbcType=REAL}
+      </if>
+    </where>
+    limit #{startRecord},#{pageSize}
+  </select>
+
+
+  <select id="selectCountByConditions" parameterType="com.chixing.entity.Rendering" resultType="java.lang.Integer">
+    SELECT count(rendering_id)
+    FROM rendering
+    <where>
+      <if test="renderingStyle !=null">
+        rendering_style = #{renderingStyle,jdbcType=VARCHAR}
+      </if>
+      <if test="renderingHouseType !=null">
+        and rendering_house_type = #{renderingHouseType,jdbcType=VARCHAR}
+      </if>
+      <if test="minRenderingArea !=null">
+        and rendering_area >=#{minRenderingArea,jdbcType=REAL}
+      </if>
+      <if test="maxRenderingArea !=null">
+        and rendering_area &lt;=#{maxRenderingArea,jdbcType=REAL}
+      </if>
+    </where>
+  </select>
+
+</mapper>

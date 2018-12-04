@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#personCenter-body{
+    width: 1100px;
+    height: 910px;
+    margin: 0px auto;
+    background: #f5f5f5;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.person-title{
+    width: 1100px;
+    height: 100px;
+    background: white;
+    border-bottom: 2px solid #01af63;
+}
+
+.logo-img{
+    width: 350px;
+    height: 80px;
+    border-right: 1px solid #eee;
+    float: left;
+    margin: 10px 0px 0px 50px;
+}
+
+.logo-img img{
+    width: 300px;
+    height: 80px;
+}
+
+.person-title span{
+    display: inline-block;
+    height: 55px;
+    font-size: 20px;
+    color: #333;
+    line-height: 55px;
+    margin: 20px 0px 0px 30px;
+}
+
+.person-body{
+    width: 1100px;
+    height: 800px;
+}
+
+.person-left-title{
+    width: 400px;
+    height: 40px;
+    margin: 10px 0px 0px 50px;
+}
+
+.person-left-title a{
+    text-decoration: none;
+    color: #999;
+    font-size: 13px;
+    line-height:  40px;
+}
+
+.person-left-title span{
+    color: #333;
+    font-size: 13px;
+    line-height:  40px;
+}
+/* ------------------------------ */
+.person-left{
+    width: 700px;
+    height: 600px;
+    float: left;
+    border: 1px solid lightgray;
+    background: white;
+    margin: 10px 0px 0px 30px;
+}
+
+.personInfo-title{
+    width: 660px;
+    height: 70px;
+    border-bottom: 1px dotted gray;
+    margin: 5px 0px 0px 20px;
+}
+
+.personInfo-title span{
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    border-left: 2px #00af63 solid ;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin: 35px 0px 0px 0px;
+}
+
+.person-left form{
+    width: 660px;
+    height: 500px;
+    margin: 10px 0px 0px 20px;
+}
+
+.person-left form span{
+    display: inline-block;
+    width: 80px;
+    height: 32px;
+    margin: 20px 0px 0px 50px;
+    font-size: 15px;
+    color: #666;
+}
+
+.person-left form label{
+    display: inline-block;
+    width:120px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #333;
+}
+
+.person-left form div .info{
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    border: lightgray 1px solid;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+button{
+    width: 130px;
+}
+
+.btn-primary{
+    margin: 30px 0px 0px 135px;
+}

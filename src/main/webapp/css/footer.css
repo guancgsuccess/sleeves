@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#footer{
+    width: 1100px;
+    height: 300px;
+    margin: 0px auto;
+    background-color: black;
+}
+
+.bootem-image{
+    margin-top: 20px;
+    width: 1100px;
+}
+
+#footer ul{
+    height: 50px;
+    list-style: none;
+    margin: 20px 0px 0px 25px;
+}
+
+#footer ul li{
+    width: 80px;
+    height: 40px;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-size: 14px;
+}
+
+#footer ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.message{
+    display: inline-block;
+    height: 25px;
+    font-size: 13px;
+    color: lightgray;
+    margin: 10px 0px 0px 55px;
+}

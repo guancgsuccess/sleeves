@@ -1,0 +1,97 @@
+#advice-body{
+    width: 1100px;
+    height: 800px;
+    margin: 0px auto;
+    border-top: 1px solid white;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+    background: #f6f6f6;
+}
+
+.advice-title{
+    width: 600px;
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+    font-size: 20px;
+    float: left;
+    margin: 50px 0px 0px 260px;
+    color: lightgray;
+
+}
+
+.advice-title span{
+    font-size: 14px;
+    margin-left: 10px;
+    color: lightgray;
+}
+
+.advice-content{
+    width: 700px;
+    height: 300px;
+    margin: 100px 0px 0px 200px;
+}
+
+.title{
+    display: inline-block;
+    width: 65px;
+    height:30px;
+    font-size: 15px;
+    margin: 70px 0px 0px 100px;
+    font-family: simsun;
+    font-weight: bold;
+    color: #333;
+}
+
+.advice-content form{
+    width: 410px;
+    height: 200px;
+    margin: -40px 0px 0px 170px;
+}
+
+.advice-content form textarea{
+    width: 400px;
+    height: 170px;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+.telephone{
+    width: 700px;
+    height: 60px;
+    margin: -25px 0px 0px 200px;
+}
+
+.phone-name{
+    display: inline-block;
+    width: 65px;
+    font-size: 15px;
+    margin: 20px 0px 0px 100px;
+    font-family: simsun;
+    font-weight: bold;
+}
+
+.phone-input{
+    width: 200px;
+    height: 32px;
+    border: 1px solid lightgray;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.telephone label{
+    font-size: 13px;
+    color: gray;
+}
+
+.advice-button{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    color: white;
+    background-color: #2B90D9;
+    border-radius: 11px;
+    border: none;
+    margin: 20px 0px 0px 380px;
+}

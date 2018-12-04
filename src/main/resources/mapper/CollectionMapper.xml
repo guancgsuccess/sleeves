@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.CollectionMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Collection">
+    <id column="collection_client_id" jdbcType="INTEGER" property="collectionClientId" />
+    <id column="collection_design_id" jdbcType="INTEGER" property="collectionDesignId" />
+    <result column="collection_id" jdbcType="INTEGER" property="collectionId" />
+    <result column="collection_time" jdbcType="TIMESTAMP" property="collectionTime" />
+    <result column="collection_status" jdbcType="INTEGER" property="collectionStatus" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="INTEGER" property="field2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    collection_client_id, collection_design_id, collection_id, collection_time, collection_status, 
+    field1, field2
+  </sql>
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="com.chixing.entity.CollectionKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from collection
+    where collection_client_id = #{collectionClientId,jdbcType=INTEGER}
+      and collection_design_id = #{collectionDesignId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 2.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="com.chixing.entity.CollectionKey">
+    delete from collection
+    where collection_client_id = #{collectionClientId,jdbcType=INTEGER}
+      and collection_design_id = #{collectionDesignId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 3.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.Collection">
+    insert into collection (collection_client_id, collection_design_id, 
+      collection_id, collection_time, collection_status, 
+      field1, field2)
+    values (#{collectionClientId,jdbcType=INTEGER}, #{collectionDesignId,jdbcType=INTEGER}, 
+      #{collectionId,jdbcType=INTEGER}, #{collectionTime,jdbcType=TIMESTAMP}, #{collectionStatus,jdbcType=INTEGER}, 
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=INTEGER})
+  </insert>
+
+  <!-- 4.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Collection">
+    update collection
+    set collection_id = #{collectionId,jdbcType=INTEGER},
+      collection_time = #{collectionTime,jdbcType=TIMESTAMP},
+      collection_status = #{collectionStatus,jdbcType=INTEGER},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=INTEGER}
+    where collection_client_id = #{collectionClientId,jdbcType=INTEGER}
+      and collection_design_id = #{collectionDesignId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Collection">
+    insert into collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectionClientId != null">
+        collection_client_id,
+      </if>
+      <if test="collectionDesignId != null">
+        collection_design_id,
+      </if>
+      <if test="collectionId != null">
+        collection_id,
+      </if>
+      <if test="collectionTime != null">
+        collection_time,
+      </if>
+      <if test="collectionStatus != null">
+        collection_status,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+      <if test="field2 != null">
+        field2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectionClientId != null">
+        #{collectionClientId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDesignId != null">
+        #{collectionDesignId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionId != null">
+        #{collectionId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null">
+        #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectionStatus != null">
+        #{collectionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Collection">
+    update collection
+    <set>
+      <if test="collectionId != null">
+        collection_id = #{collectionId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null">
+        collection_time = #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectionStatus != null">
+        collection_status = #{collectionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=INTEGER},
+      </if>
+    </set>
+    where collection_client_id = #{collectionClientId,jdbcType=INTEGER}
+    and collection_design_id = #{collectionDesignId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#personCenter-body{
+    width: 1100px;
+    height: 910px;
+    margin: 0px auto;
+    background: #f8f8f8;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.person-title{
+    width: 1100px;
+    height: 100px;
+    background: white;
+    border-bottom: 2px solid #01af63;
+}
+
+.logo-img{
+    width: 350px;
+    height: 80px;
+    border-right: 1px solid #eee;
+    float: left;
+    margin: 10px 0px 0px 50px;
+}
+
+.logo-img img{
+    width: 300px;
+    height: 80px;
+}
+
+.person-title span{
+    display: inline-block;
+    height: 55px;
+    font-size: 20px;
+    color: #333;
+    line-height: 55px;
+    margin: 20px 0px 0px 30px;
+}
+
+.person-body{
+    width: 1100px;
+    height: 800px;
+}
+
+.person-left-title{
+    width: 400px;
+    height: 40px;
+    margin: 10px 0px 0px 50px;
+}
+
+.person-left-title a{
+    text-decoration: none;
+    color: #999;
+    font-size: 13px;
+    line-height:  40px;
+}
+
+.person-left-title span{
+    color: #333;
+    font-size: 13px;
+    line-height:  40px;
+}
+/* ------------------------------ */
+.person-left{
+    width: 700px;
+    height: 450px;
+    float: left;
+    margin: 10px 0px 0px 50px;
+    border: 1px solid #d9e1e8;
+    background: white;
+}
+
+.personInfo-title{
+    width: 660px;
+    height: 70px;
+    margin: 5px 0px 0px 20px;
+}
+
+.personInfo-title span{
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    float: left;
+    border-left: 2px #00af63 solid ;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin: 35px 0px 0px 0px;
+}
+
+.first-info{
+    width: 660px;
+    height: 50px;
+    margin: 10px 0px 0px 20px;
+}
+
+.first-info span{
+    display: inline-block;
+    width: 80px;
+    height: 34px;
+    margin: 10px 0px 0px 20px;
+    text-align: center;
+    line-height: 34px;
+    font-size: 14px;
+    color: dimgray;
+}
+
+.first-info label{
+    display: inline-block;
+    width: 120px;
+    height: 34px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    border: 1px solid lightgray;
+    color: black;
+}
+
+.first-info select{
+    width: 120px;
+    height: 34px;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    color: balck;
+    padding-left: 25px;
+}
+
+.first-info .address_info{
+    width: 500px;
+    height: 33px;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.first-info .other-input{
+    width: 200px;
+    height: 33px;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+}
+
+button{
+    display: block;
+    width: 120px;
+
+}
+
+.btn-primary{
+    margin: 20px 0px 0px 125px;
+}

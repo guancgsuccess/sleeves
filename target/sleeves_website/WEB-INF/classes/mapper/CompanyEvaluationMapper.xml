@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.CompanyEvaluationMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.CompanyEvaluation">
+    <id column="evaluation_id" jdbcType="INTEGER" property="evaluationId" />
+    <result column="evaluation_order_id" jdbcType="INTEGER" property="evaluationOrderId" />
+    <result column="evaluation_company_id" jdbcType="INTEGER" property="evaluationCompanyId" />
+    <result column="evaluation_time" jdbcType="TIMESTAMP" property="evaluationTime" />
+    <result column="evaluation_content" jdbcType="VARCHAR" property="evaluationContent" />
+    <result column="evaluation_company_fraction" jdbcType="DOUBLE" property="evaluationCompanyFraction" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="INTEGER" property="field2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    evaluation_id, evaluation_order_id, evaluation_company_id, evaluation_time, evaluation_content, 
+    evaluation_company_fraction, field1, field2
+  </sql>
+
+
+  <!-- 查询公司前三条评论-->
+  <select id="selectCompanyEvaluation" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+    SELECT client_name,client_profile,ce.evaluation_time ,ce.evaluation_content
+    FROM company_evaluation ce JOIN company c
+    ON ce.evaluation_company_id = c.company_id JOIN design_order d
+    ON evaluation_order_id = d.design_order_id JOIN client cl
+    ON d.client_id = cl.client_id
+    WHERE c.company_id=#{companyId,jdbcType=INTEGER}
+    limit 0,3
+</select>
+
+  <!-- 根据分页查询公司评论-->
+  <select id="selectCompanyEvaluationByPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT client_name,client_profile,ce.evaluation_time ,ce.evaluation_content
+    FROM company_evaluation ce JOIN company c
+    ON ce.evaluation_company_id = c.company_id JOIN design_order d
+    ON evaluation_order_id = d.design_order_id JOIN client cl
+    ON d.client_id = cl.client_id
+    WHERE c.company_id=#{companyId,jdbcType=INTEGER}
+    limit #{startRecord},#{pageSize}
+</select>
+
+  <!-- 统计公司评论数-->
+  <select id="selectCountCompanyEvaluationByPage" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+  SELECT COUNT(evaluation_id)
+  FROM company_evaluation ce JOIN company c
+  ON ce.evaluation_company_id = c.company_id JOIN design_order d
+  ON evaluation_order_id = d.design_order_id JOIN client cl
+  ON d.client_id = cl.client_id
+  WHERE c.company_id=#{companyId,jdbcType=INTEGER}
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <select id="selectByExample" parameterType="com.chixing.entity.CompanyEvaluationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_evaluation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company_evaluation
+    where evaluation_id = #{evaluationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company_evaluation
+    where evaluation_id = #{evaluationId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chixing.entity.CompanyEvaluationExample">
+    delete from company_evaluation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chixing.entity.CompanyEvaluation">
+    insert into company_evaluation (evaluation_id, evaluation_order_id, 
+      evaluation_company_id, evaluation_time, 
+      evaluation_content, evaluation_company_fraction, 
+      field1, field2)
+    values (#{evaluationId,jdbcType=INTEGER}, #{evaluationOrderId,jdbcType=INTEGER}, 
+      #{evaluationCompanyId,jdbcType=INTEGER}, #{evaluationTime,jdbcType=TIMESTAMP}, 
+      #{evaluationContent,jdbcType=VARCHAR}, #{evaluationCompanyFraction,jdbcType=DOUBLE}, 
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chixing.entity.CompanyEvaluation">
+    insert into company_evaluation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluationId != null">
+        evaluation_id,
+      </if>
+      <if test="evaluationOrderId != null">
+        evaluation_order_id,
+      </if>
+      <if test="evaluationCompanyId != null">
+        evaluation_company_id,
+      </if>
+      <if test="evaluationTime != null">
+        evaluation_time,
+      </if>
+      <if test="evaluationContent != null">
+        evaluation_content,
+      </if>
+      <if test="evaluationCompanyFraction != null">
+        evaluation_company_fraction,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+      <if test="field2 != null">
+        field2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluationId != null">
+        #{evaluationId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationOrderId != null">
+        #{evaluationOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationCompanyId != null">
+        #{evaluationCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationTime != null">
+        #{evaluationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationContent != null">
+        #{evaluationContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationCompanyFraction != null">
+        #{evaluationCompanyFraction,jdbcType=DOUBLE},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chixing.entity.CompanyEvaluationExample" resultType="java.lang.Long">
+    select count(*) from company_evaluation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update company_evaluation
+    <set>
+      <if test="record.evaluationId != null">
+        evaluation_id = #{record.evaluationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluationOrderId != null">
+        evaluation_order_id = #{record.evaluationOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluationCompanyId != null">
+        evaluation_company_id = #{record.evaluationCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluationTime != null">
+        evaluation_time = #{record.evaluationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.evaluationContent != null">
+        evaluation_content = #{record.evaluationContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluationCompanyFraction != null">
+        evaluation_company_fraction = #{record.evaluationCompanyFraction,jdbcType=DOUBLE},
+      </if>
+      <if test="record.field1 != null">
+        field1 = #{record.field1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.field2 != null">
+        field2 = #{record.field2,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update company_evaluation
+    set evaluation_id = #{record.evaluationId,jdbcType=INTEGER},
+      evaluation_order_id = #{record.evaluationOrderId,jdbcType=INTEGER},
+      evaluation_company_id = #{record.evaluationCompanyId,jdbcType=INTEGER},
+      evaluation_time = #{record.evaluationTime,jdbcType=TIMESTAMP},
+      evaluation_content = #{record.evaluationContent,jdbcType=VARCHAR},
+      evaluation_company_fraction = #{record.evaluationCompanyFraction,jdbcType=DOUBLE},
+      field1 = #{record.field1,jdbcType=VARCHAR},
+      field2 = #{record.field2,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.CompanyEvaluation">
+    update company_evaluation
+    <set>
+      <if test="evaluationOrderId != null">
+        evaluation_order_id = #{evaluationOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationCompanyId != null">
+        evaluation_company_id = #{evaluationCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationTime != null">
+        evaluation_time = #{evaluationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluationContent != null">
+        evaluation_content = #{evaluationContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationCompanyFraction != null">
+        evaluation_company_fraction = #{evaluationCompanyFraction,jdbcType=DOUBLE},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=INTEGER},
+      </if>
+    </set>
+    where evaluation_id = #{evaluationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.CompanyEvaluation">
+    update company_evaluation
+    set evaluation_order_id = #{evaluationOrderId,jdbcType=INTEGER},
+      evaluation_company_id = #{evaluationCompanyId,jdbcType=INTEGER},
+      evaluation_time = #{evaluationTime,jdbcType=TIMESTAMP},
+      evaluation_content = #{evaluationContent,jdbcType=VARCHAR},
+      evaluation_company_fraction = #{evaluationCompanyFraction,jdbcType=DOUBLE},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=INTEGER}
+    where evaluation_id = #{evaluationId,jdbcType=INTEGER}
+  </update>
+</mapper>

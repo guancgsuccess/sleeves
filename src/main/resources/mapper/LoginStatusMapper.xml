@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.LoginStatusMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.LoginStatus">
+    <id column="login_status_id" jdbcType="INTEGER" property="loginStatusId" />
+    <result column="client_id" jdbcType="INTEGER" property="clientId" />
+    <result column="client_ip" jdbcType="VARCHAR" property="clientIp" />
+    <result column="client_login_status" jdbcType="INTEGER" property="clientLoginStatus" />
+    <result column="client_login_time" jdbcType="TIMESTAMP" property="clientLoginTime" />
+    <result column="client_login_method" jdbcType="VARCHAR" property="clientLoginMethod" />
+    <result column="field" jdbcType="INTEGER" property="field" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    login_status_id, client_id, client_ip, client_login_status, client_login_time, client_login_method, 
+    field, field1
+  </sql>
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from login_status
+    where login_status_id = #{loginStatusId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 2.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from login_status
+    where login_status_id = #{loginStatusId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 3.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.LoginStatus">
+    insert into login_status (login_status_id, client_id, client_ip, 
+      client_login_status, client_login_time, client_login_method, 
+      field, field1)
+    values (#{loginStatusId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{clientIp,jdbcType=VARCHAR}, 
+      #{clientLoginStatus,jdbcType=INTEGER}, #{clientLoginTime,jdbcType=TIMESTAMP}, #{clientLoginMethod,jdbcType=VARCHAR}, 
+      #{field,jdbcType=INTEGER}, #{field1,jdbcType=VARCHAR})
+  </insert>
+
+  <!-- 4.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.LoginStatus">
+    update login_status
+    set client_id = #{clientId,jdbcType=INTEGER},
+      client_ip = #{clientIp,jdbcType=VARCHAR},
+      client_login_status = #{clientLoginStatus,jdbcType=INTEGER},
+      client_login_time = #{clientLoginTime,jdbcType=TIMESTAMP},
+      client_login_method = #{clientLoginMethod,jdbcType=VARCHAR},
+      field = #{field,jdbcType=INTEGER},
+      field1 = #{field1,jdbcType=VARCHAR}
+    where login_status_id = #{loginStatusId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.LoginStatus">
+    insert into login_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginStatusId != null">
+        login_status_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="clientIp != null">
+        client_ip,
+      </if>
+      <if test="clientLoginStatus != null">
+        client_login_status,
+      </if>
+      <if test="clientLoginTime != null">
+        client_login_time,
+      </if>
+      <if test="clientLoginMethod != null">
+        client_login_method,
+      </if>
+      <if test="field != null">
+        field,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginStatusId != null">
+        #{loginStatusId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="clientIp != null">
+        #{clientIp,jdbcType=VARCHAR},
+      </if>
+      <if test="clientLoginStatus != null">
+        #{clientLoginStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientLoginTime != null">
+        #{clientLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientLoginMethod != null">
+        #{clientLoginMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        #{field,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.LoginStatus">
+    update login_status
+    <set>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="clientIp != null">
+        client_ip = #{clientIp,jdbcType=VARCHAR},
+      </if>
+      <if test="clientLoginStatus != null">
+        client_login_status = #{clientLoginStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientLoginTime != null">
+        client_login_time = #{clientLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientLoginMethod != null">
+        client_login_method = #{clientLoginMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        field = #{field,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_status_id = #{loginStatusId,jdbcType=INTEGER}
+  </update>
+</mapper>

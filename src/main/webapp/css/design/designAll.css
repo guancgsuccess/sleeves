@@ -1,0 +1,146 @@
+a{
+    text-decoration: none;
+}
+
+#design-body{
+    width: 1100px;
+    height: 1260px;
+    margin: 0px auto;
+    background: #F5F5F5;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.design-top{
+    width: 500px;
+    height: 34px;
+    font-size: 20px;
+    color: gray;
+    font-family: "Microsoft Yahei";
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.design-top ul li{
+    width:125px;
+    height: 31px;
+    font-size: 14px;
+    line-height: 25px;
+    list-style: none;
+    color: grey;
+}
+
+.design-top ul li a{
+    color: grey;
+    text-decoration: none;
+
+}
+
+li{
+    float: left;
+}
+
+.design-top ul li i.small {
+    margin-left: 12px;
+}
+
+.design-top ul li a:hover {
+    color: #000000;
+}
+/* ---------------------------------------------------- */
+.classify{
+    width: 1100px;
+    height: 195px;
+    border-top: 1px solid lightgray;
+
+}
+
+.classify-title{
+    width: 1100px;
+    height: 60px;
+    border-bottom: 1px solid lightgray;
+}
+
+.classify-title span{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 65px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.reset-with{
+    width: 900px;
+    height: 40px;
+    float: left;
+    margin: 20px 0px 0px 40px;
+}
+
+.reset-with ul{
+    list-style: none;
+}
+
+.reset-with ul li{
+    width: 100px;
+    height: 35px;
+    margin-left: -10px;
+}
+
+.reset-with ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.design-plan{
+    width: 1100px;
+    height: 1000px;
+}
+
+.design-plan ul{
+    width: 1100px;
+    height: 300px;
+    list-style: none;
+    padding: 0;
+}
+
+.design-plan ul li{
+    width: 320px;
+    height: 300px;
+    background: white;
+    margin: 30px 0px 0px 35px;
+}
+
+.design-plan ul li a{
+    text-decoration: none;
+}
+
+.design-plan ul li a img{
+    width: 280px;
+    height: 200px;
+    padding: 25px 0px 0px 20px;
+}
+
+.design-name{
+    width: 200px;
+    height: 24px;
+    margin: 10px 0px 0px 20px;
+    font-size: 18px;
+    font-family: simhei;
+}
+
+.design-name a{
+    color: black;
+}
+
+.design-plan ul li span{
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    font-size: 13px;
+    margin-left: 20px;
+    color: gray;
+}

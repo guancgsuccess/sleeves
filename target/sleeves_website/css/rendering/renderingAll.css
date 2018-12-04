@@ -1,0 +1,368 @@
+a{
+    text-decoration: none;
+}
+
+#renderingAll-body{
+    width: 1100px;
+    height: 1760px;
+    margin: 0px auto;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+#major-body{
+    width: 1100px;
+    height: 1740px;
+}
+
+#major-body .top-img img{
+    width: 1100px;
+    height: 330px;
+}
+
+.rendering-title{
+    width: 1100px;
+    height: 30px;
+    margin-top: 20px;
+    color: gray;
+    padding-left: 50px;
+}
+
+.rendering-title1{
+    width: 1100px;
+    height: 30px;
+    margin-top: 20px;
+    color: gray;
+    padding-left: 12px;
+}
+
+.rendering-title ul{
+    list-style: none;
+}
+
+.rendering-title ul li{
+    float: left;
+    width: 120px;
+    height: 30px;
+}
+
+#filter
+{
+    width:1100px;
+    height:180px;
+    margin-right:auto;
+    font-size:16px;
+    border:1px solid lightgrey;
+    padding-left: 40px;
+}
+
+#filter dl
+{
+
+    margin-bottom:0;
+    clear:both;
+    padding:4px 0;
+}
+
+#filter dt,dd
+{
+    display:block;
+    float:left;
+    width:auto;
+    padding:10px;
+    margin:3px 0;
+}
+
+#filter dt
+{
+    height:14px;
+    padding-bottom:4px;
+    font-weight:bold;
+    color:#333333;
+}
+
+#filter dd
+{
+    color:slategrey;
+    margin-right:8px;
+}
+
+#filter a
+{
+    cursor:pointer;
+}
+
+.seling
+{
+    background-color: #3ac569;
+    color:#FFFFFF;
+}
+
+.seled
+{
+    background-color: #3ac569;
+    color:#FFFFFF;
+}
+
+.rendering-img{
+    width: 1100px;
+    height: 1200px;
+}
+
+.rendering-img span{
+    display: inline-block;
+    width: 70px;
+    margin-left: 40px;
+}
+
+.rendering-img a{
+    display: inline-block;
+    width: 70px;
+}
+
+.rendering-images{
+    width: 1100px;
+    height: 970px;
+}
+
+.rendering-images ul{
+    width: 1100px;
+    height: 330px;
+    list-style: none;
+}
+
+.rendering-images ul li{
+    width: 300px;
+    height: 300px;
+    float: left;
+    margin: 15px 0px 0px 35px;
+}
+
+.small-img a img{
+    width: 296px;
+    height: 260px;
+}
+
+.img-info{
+    width: 250px;
+    height: 30px;
+}
+
+.small-img a,.img-info a{
+    text-decoration: none;
+}
+
+.small-img a img:hover{
+    width: 310px;
+    height: 280px;
+}
+
+.img-info a{
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    color: black;
+    font-size: 13px;
+    padding-left:18px;
+}
+
+/*---------------分页---------------------*/
+/*
+
+.page-split{
+    width: 1100px;
+    height: 50px;
+    position: absolute;
+}
+
+.page-split .first-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    position: relative;
+    top: 10px;
+    left: 200px;
+    float: left;
+}
+
+.page-split .two-span{
+    display: block;
+    width: 120px;
+    height: 25px;
+    position: relative;
+    top: 10px;
+    left: 200px;
+    float: left;
+}
+
+.page-split .two-span label{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    float: left;
+
+}
+
+.page-split .two-span  b{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.page-split .two-span  b a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: -17px;
+}
+
+.page-split .three-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    position: relative;
+    top: 10px;
+    left: 180px;
+    float: left;
+}
+
+.page-split .four-span{
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+    position: relative;
+    top: 10px;
+    left: 200px;
+    float: left;
+}
+.page-split .one-span{
+    margin-left: -140px;
+}
+.page-split .finally-span{
+    margin-left: 185px;
+}
+
+.page-input{
+    width: 120px;
+    height: 33px;
+    margin: 5px 0px 0px 210px;
+}
+
+
+.page-button{
+    width: 100px;
+    height: 33px;
+    border: none;
+    background: #3AC569;
+    border-radius: 12px;
+    margin-left: 20px;
+}
+
+.first-span a,.two-span b a,.three-span a{
+    text-decoration: none;
+    color: black;
+}*/
+
+/* ------------分页------------- */
+.page-split{
+    width: 825px;
+    height: 50px;
+    margin: 20px 0px 0px 110px;
+}
+
+.page-split .one-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 120px;
+}
+
+.one-span a , .first-span a, .three-span a , .finally-span a , .page-split .two-span b a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-split .first-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span{
+    display: block;
+    width: 125px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span label{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    float: left;
+
+}
+
+.page-split .two-span  b{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: -15px;
+}
+
+.page-split .two-span  b a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.page-split .three-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 5px;
+}
+
+.page-split .finally-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 20px;
+}
+
+.page-split .four-span{
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .page-input{
+    width: 70px;
+    height: 25px;
+    margin: 10px 0px 0px 6px;
+}
+
+
+.page-split .page-button{
+    width: 100px;
+    height: 27px;
+    border: none;
+    background: #3AC569;
+    border-radius: 15px;
+    margin: 10px 0px 0px 20px;
+}
+

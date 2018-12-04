@@ -1,0 +1,192 @@
+#designDetail-body{
+    width: 1100px;
+    height: 2400px;
+    margin: 0px auto;
+    background: #F5F5F5;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+.detail-title{
+    width: 500px;
+    height: 40px;
+    color: gray;
+    font-size: 13px;
+    line-height: 40px ;
+    margin: 10px 0px 0px 55px;
+}
+
+.detail-title span{
+    color: #333333;
+    font-size: 13px;
+}
+
+.major-body{
+    width: 800px;
+    height: 2330px;
+    background: white;
+    margin: 10px 0px 0px 50px;
+    float: left;
+}
+
+.major-body span{
+    display: inline-block;
+    width: 740px;
+    height: 70px;
+    line-height: 85px;
+    padding-left: 80px;
+    font-size: 25px;
+}
+
+.major-body img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 10px 0px 0px 80px;
+    float: left;
+}
+
+.designer-name{
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin: 28px 0px 0px 20px;
+    color: gray;
+}
+
+.designer-name img{
+    float: left;
+    width: 65px;
+    height: 27px;
+    margin: 0px 0px 0px 1px;
+}
+
+.designer-name label{
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.house-info{
+    width: 650px;
+    height: 120px;
+    background: #f6f6f6;
+    margin: 90px 0px 0px 80px;
+    border-radius: 10px;
+}
+
+.house-info img{
+    width: 170px;
+    height: 80px;
+    margin: 25px 0px 0px 20px;
+}
+
+.houseInfo{
+    width: 400px;
+    height: 120px;
+    margin-left: 220px;
+    border-left: 1px solid lightgray;
+}
+
+.houseInfo ul{
+    list-style: none;
+}
+
+.houseInfo ul li{
+    width: 140px;
+    height: 30px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+    color: gray;
+    font-size: 14px;
+}
+
+.image-info{
+    width: 650px;
+    height: 1050px;
+    margin: 20px 0px 0px 80px;
+    position: absolute;
+}
+
+.image-info span{
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0px 0px 180px;
+    color: #333333;
+    font-size: 22px;
+}
+
+.major-body .image-info .images .house-img{
+    width: 650px;
+    height: 365px;
+    margin: 15px 0px 0px 0px;
+    border-radius: 0px;
+}
+
+.right{
+    float: left;
+    width: 220px;
+    height: 250px;
+    background: white;
+    margin: 10px 0px 0px 15px;
+}
+
+.company-profile{
+    width: 100%;
+    height: 160px;
+}
+
+.profile{
+    width: 120px;
+    height: 110px;
+    margin: 10px 0px 0px 60px;
+}
+
+.profile img{
+    width: 90px;
+    height: 90px;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+}
+
+.company-profile span{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+.right .sure-order{
+    width: 100px;
+    height: 36px;
+    margin: 10px 0px 0px 5px;
+    border: none;
+    background: orangered;
+    color: white;
+    font-weight: 800;
+}
+
+.page-button{
+    width: 100px;
+    height: 36px;
+    border: 1px solid orangered;
+    background: white;
+    color: orangered;
+
+}
+
+.page-button:hover{
+    color: white;
+    background: orangered;
+    font-weight: 800;
+}
+
+.company-profile span a{
+    text-decoration: none;
+    color: black;
+}

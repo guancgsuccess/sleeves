@@ -1,0 +1,59 @@
+
+#aboutUs-body{
+    width:1100px;
+    margin: 0 auto;
+    height: 1000px;
+    background: #f5f5f5;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+}
+
+#photograph{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+#photograph p b {
+    font-size: 30px;
+}
+
+#picture img{
+    width:1100px;
+    height: 350px;
+}
+
+.person{
+    margin-left: 50px;
+    float: left;
+}
+
+.person img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+}
+
+.person img p{
+    float: left;
+    font-size: 12px;
+}
+
+.person p{
+    float: left;
+}
+.person .img{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+.paragraph{
+    width: 300px;
+    height: 270px;
+    float: left;
+    margin: 15px 0px 0px 30px;
+    padding-right: 50px;
+}

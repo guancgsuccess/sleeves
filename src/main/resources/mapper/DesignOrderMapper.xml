@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.DesignOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.chixing.entity.DesignOrder">
+    <id column="design_order_id" jdbcType="INTEGER" property="designOrderId" />
+    <result column="design_order_no" jdbcType="VARCHAR" property="designOrderNo" />
+    <result column="client_id" jdbcType="INTEGER" property="clientId" />
+    <result column="design_id" jdbcType="INTEGER" property="designId" />
+    <result column="design_order_time" jdbcType="TIMESTAMP" property="designOrderTime" />
+    <result column="design_order_status" jdbcType="INTEGER" property="designOrderStatus" />
+    <result column="order_fields1" jdbcType="VARCHAR" property="orderFields1" />
+    <result column="order_fields2" jdbcType="VARCHAR" property="orderFields2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    design_order_id, design_order_no, client_id, design_id, design_order_time, design_order_status, 
+    order_fields1, order_fields2
+  </sql>
+
+  <!-- 查找所有的地址 -->
+  <select id="select" parameterType="java.lang.Integer" resultType="com.chixing.entity.OrderAndResign">
+      SELECT des.design_id,des.design_name,des.design_area,des.field1,des.design_style,des.design_house_type,des.design_price,deo.design_order_no
+      FROM design des JOIN design_order deo
+      On des.design_id=deo.design_id
+      WHERE deo.client_id=#{clientId}
+  </select>
+
+
+  <select id="selectAllOrder" parameterType="java.lang.Integer" resultType="com.chixing.entity.OrderAndResign">
+      SELECT des.design_id,des.design_name,des.design_area,des.field1,des.design_style,des.design_house_type,des.design_price,deo.design_order_no
+      from design_order
+  </select>
+
+  <!-- 查找已付款 -->
+  <select id="selectOrderYes" parameterType="java.lang.Integer" resultType="com.chixing.entity.OrderAndResign">
+    SELECT des.design_id,des.design_name,des.design_area,des.field1,des.design_style,des.design_house_type,des.design_price,deo.design_order_no
+    FROM design des JOIN design_order deo
+    ON des.design_id=deo.design_id
+    WHERE deo.client_id=#{clientId} AND deo.design_order_status=1
+  </select>
+  <!-- 查找未付款 -->
+  <select id="selectOrderNo" parameterType="java.lang.Integer" resultType="com.chixing.entity.OrderAndResign">
+    SELECT des.design_id,des.design_name,des.design_area,des.field1,des.design_style,des.design_house_type,des.design_price,deo.design_order_no
+    FROM design des JOIN design_order deo
+    ON des.design_id=deo.design_id
+    WHERE deo.client_id=#{clientId} AND deo.design_order_status=0
+  </select>
+
+  <!-- 根据客户id和方案id查找订单 -->
+  <select id="selectOrder" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from design_order
+    where client_id=#{clientId} AND design_id=#{designId}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from design_order
+    where design_order_id = #{designOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from design_order
+    where design_order_id = #{designOrderId,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.DesignOrder">
+    update design_order
+    set design_order_no = #{designOrderNo,jdbcType=VARCHAR},
+      client_id = #{clientId,jdbcType=INTEGER},
+      design_id = #{designId,jdbcType=INTEGER},
+      design_order_time = #{designOrderTime,jdbcType=TIMESTAMP},
+      design_order_status = #{designOrderStatus,jdbcType=INTEGER},
+      order_fields1 = #{orderFields1,jdbcType=VARCHAR},
+      order_fields2 = #{orderFields2,jdbcType=VARCHAR}
+    where design_order_id = #{designOrderId,jdbcType=INTEGER}
+  </update>
+  <insert id="insert" parameterType="com.chixing.entity.DesignOrder">
+    insert into design_order (design_order_id, design_order_no, client_id, 
+      design_id, design_order_time, design_order_status, 
+      order_fields1, order_fields2)
+    values (#{designOrderId,jdbcType=INTEGER},
+            #{designOrderNo,jdbcType=VARCHAR},
+            #{clientId,jdbcType=INTEGER},
+            #{designId,jdbcType=INTEGER},
+            #{designOrderTime,jdbcType=TIMESTAMP},
+            #{designOrderStatus,jdbcType=INTEGER},
+            #{orderFields1,jdbcType=VARCHAR},
+            #{orderFields2,jdbcType=VARCHAR})
+  </insert>
+
+  <!-- 根据订单编号查询订单 -->
+  <select id="selectDesignOrderByNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from design_order
+    where design_order_no = #{designOrderNo,jdbcType=VARCHAR}
+
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <select id="selectByExample" parameterType="com.chixing.entity.DesignOrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from design_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chixing.entity.DesignOrderExample">
+    delete from design_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="com.chixing.entity.DesignOrder">
+    insert into design_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="designOrderId != null">
+        design_order_id,
+      </if>
+      <if test="designOrderNo != null">
+        design_order_no,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="designId != null">
+        design_id,
+      </if>
+      <if test="designOrderTime != null">
+        design_order_time,
+      </if>
+      <if test="designOrderStatus != null">
+        design_order_status,
+      </if>
+      <if test="orderFields1 != null">
+        order_fields1,
+      </if>
+      <if test="orderFields2 != null">
+        order_fields2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="designOrderId != null">
+        #{designOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="designOrderNo != null">
+        #{designOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="designId != null">
+        #{designId,jdbcType=INTEGER},
+      </if>
+      <if test="designOrderTime != null">
+        #{designOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="designOrderStatus != null">
+        #{designOrderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderFields1 != null">
+        #{orderFields1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFields2 != null">
+        #{orderFields2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chixing.entity.DesignOrderExample" resultType="java.lang.Long">
+    select count(*) from design_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update design_order
+    <set>
+      <if test="record.designOrderId != null">
+        design_order_id = #{record.designOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.designOrderNo != null">
+        design_order_no = #{record.designOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientId != null">
+        client_id = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.designId != null">
+        design_id = #{record.designId,jdbcType=INTEGER},
+      </if>
+      <if test="record.designOrderTime != null">
+        design_order_time = #{record.designOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.designOrderStatus != null">
+        design_order_status = #{record.designOrderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderFields1 != null">
+        order_fields1 = #{record.orderFields1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderFields2 != null">
+        order_fields2 = #{record.orderFields2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update design_order
+    set design_order_id = #{record.designOrderId,jdbcType=INTEGER},
+      design_order_no = #{record.designOrderNo,jdbcType=VARCHAR},
+      client_id = #{record.clientId,jdbcType=INTEGER},
+      design_id = #{record.designId,jdbcType=INTEGER},
+      design_order_time = #{record.designOrderTime,jdbcType=TIMESTAMP},
+      design_order_status = #{record.designOrderStatus,jdbcType=INTEGER},
+      order_fields1 = #{record.orderFields1,jdbcType=VARCHAR},
+      order_fields2 = #{record.orderFields2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.DesignOrder">
+    update design_order
+    <set>
+      <if test="designOrderNo != null">
+        design_order_no = #{designOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="designId != null">
+        design_id = #{designId,jdbcType=INTEGER},
+      </if>
+      <if test="designOrderTime != null">
+        design_order_time = #{designOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="designOrderStatus != null">
+        design_order_status = #{designOrderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderFields1 != null">
+        order_fields1 = #{orderFields1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFields2 != null">
+        order_fields2 = #{orderFields2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where design_order_id = #{designOrderId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

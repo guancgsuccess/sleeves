@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.ClientMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Client">
+    <id column="client_id" jdbcType="INTEGER" property="clientId" />
+    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+    <result column="client_password" jdbcType="VARCHAR" property="clientPassword" />
+    <result column="client_telephone" jdbcType="BIGINT" property="clientTelephone" />
+    <result column="client_email" jdbcType="VARCHAR" property="clientEmail" />
+    <result column="client_profile" jdbcType="VARCHAR" property="clientProfile" />
+    <result column="client_age" jdbcType="INTEGER" property="clientAge" />
+    <result column="client_birthday" jdbcType="TIMESTAMP" property="clientBirthday" />
+    <result column="client_gender" jdbcType="INTEGER" property="clientGender" />
+    <result column="client_address" jdbcType="VARCHAR" property="clientAddress" />
+    <result column="client_status" jdbcType="INTEGER" property="clientStatus" />
+    <result column="client_field" jdbcType="INTEGER" property="clientField" />
+    <result column="client_field1" jdbcType="VARCHAR" property="clientField1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    client_id, client_name, client_password, client_telephone, client_email,
+    client_profile, client_age, client_birthday, client_gender, client_address, client_status, 
+    client_field, client_field1
+  </sql>
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 2.查询所有客户-->
+  <select id="selectAllClient" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+  </select>
+
+  <!-- 3.根据客户名查询客户-->
+  <select id="selectClientByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where client_name = #{clientName,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 4.根据邮箱名查询客户-->
+  <select id="selectClientByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where client_email = #{clientEmail,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 5.根据手机号查询客户-->
+  <select id="selectClientByPhone" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where client_telephone = #{clientTelephone,jdbcType=BIGINT}
+  </select>
+
+  <!-- 6.根据邮箱名和密码查询客户-->
+  <select id="selectClientByEmailAndPwd" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where client_email = #{clientEmail,jdbcType=VARCHAR} AND client_password = #{clientPassword,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 7.根据手机号和密码查询客户 -->
+  <select id="selectClientByPhoneAndPwd" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where client_telephone = #{clientTelephone,jdbcType=BIGINT} AND client_password = #{clientPassword,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 8.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from client
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 9.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.Client">
+    insert into client (client_id, client_name,client_password, client_telephone, client_email,
+      client_profile, client_age, client_birthday, client_gender, client_address, client_status,
+      client_field, client_field1)
+    values (#{clientId,jdbcType=INTEGER}, #{clientName,jdbcType=VARCHAR},
+      #{clientPassword,jdbcType=VARCHAR}, #{clientTelephone,jdbcType=BIGINT}, #{clientEmail,jdbcType=VARCHAR}, 
+      #{clientProfile,jdbcType=VARCHAR}, #{clientAge,jdbcType=INTEGER}, #{clientBirthday,jdbcType=TIMESTAMP}, 
+      #{clientGender,jdbcType=INTEGER}, #{clientAddress,jdbcType=VARCHAR}, #{clientStatus,jdbcType=INTEGER}, 
+      #{clientField,jdbcType=INTEGER}, #{clientField1,jdbcType=VARCHAR})
+  </insert>
+
+  <!-- 10.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Client">
+    update client
+    set client_name = #{clientName,jdbcType=VARCHAR},
+      client_password = #{clientPassword,jdbcType=VARCHAR},
+      client_telephone = #{clientTelephone,jdbcType=BIGINT},
+      client_email = #{clientEmail,jdbcType=VARCHAR},
+      client_profile = #{clientProfile,jdbcType=VARCHAR},
+      client_age = #{clientAge,jdbcType=INTEGER},
+      client_birthday = #{clientBirthday,jdbcType=TIMESTAMP},
+      client_gender = #{clientGender,jdbcType=INTEGER},
+      client_address = #{clientAddress,jdbcType=VARCHAR},
+      client_status = #{clientStatus,jdbcType=INTEGER},
+      client_field = #{clientField,jdbcType=INTEGER},
+      client_field1 = #{clientField1,jdbcType=VARCHAR}
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Client">
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="clientName != null">
+        client_name,
+      </if>
+      <if test="clientAccount != null">
+        client_account,
+      </if>
+      <if test="clientPassword != null">
+        client_password,
+      </if>
+      <if test="clientTelephone != null">
+        client_telephone,
+      </if>
+      <if test="clientEmail != null">
+        client_email,
+      </if>
+      <if test="clientProfile != null">
+        client_profile,
+      </if>
+      <if test="clientAge != null">
+        client_age,
+      </if>
+      <if test="clientBirthday != null">
+        client_birthday,
+      </if>
+      <if test="clientGender != null">
+        client_gender,
+      </if>
+      <if test="clientAddress != null">
+        client_address,
+      </if>
+      <if test="clientStatus != null">
+        client_status,
+      </if>
+      <if test="clientField != null">
+        client_field,
+      </if>
+      <if test="clientField1 != null">
+        client_field1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientAccount != null">
+        #{clientAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="clientPassword != null">
+        #{clientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clientTelephone != null">
+        #{clientTelephone,jdbcType=BIGINT},
+      </if>
+      <if test="clientEmail != null">
+        #{clientEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="clientProfile != null">
+        #{clientProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clientAge != null">
+        #{clientAge,jdbcType=INTEGER},
+      </if>
+      <if test="clientBirthday != null">
+        #{clientBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientGender != null">
+        #{clientGender,jdbcType=INTEGER},
+      </if>
+      <if test="clientAddress != null">
+        #{clientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        #{clientStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientField != null">
+        #{clientField,jdbcType=INTEGER},
+      </if>
+      <if test="clientField1 != null">
+        #{clientField1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Client">
+    update client
+    <set>
+      <if test="clientName != null">
+        client_name = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientAccount != null">
+        client_account = #{clientAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="clientPassword != null">
+        client_password = #{clientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clientTelephone != null">
+        client_telephone = #{clientTelephone,jdbcType=BIGINT},
+      </if>
+      <if test="clientEmail != null">
+        client_email = #{clientEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="clientProfile != null">
+        client_profile = #{clientProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clientAge != null">
+        client_age = #{clientAge,jdbcType=INTEGER},
+      </if>
+      <if test="clientBirthday != null">
+        client_birthday = #{clientBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientGender != null">
+        client_gender = #{clientGender,jdbcType=INTEGER},
+      </if>
+      <if test="clientAddress != null">
+        client_address = #{clientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        client_status = #{clientStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clientField != null">
+        client_field = #{clientField,jdbcType=INTEGER},
+      </if>
+      <if test="clientField1 != null">
+        client_field1 = #{clientField1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where client_id = #{clientId,jdbcType=INTEGER}
+  </update>
+</mapper>

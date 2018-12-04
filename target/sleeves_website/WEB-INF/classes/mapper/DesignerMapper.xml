@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.DesignerMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Designer">
+    <id column="designer_id" jdbcType="INTEGER" property="designerId" />
+    <result column="designer_name" jdbcType="VARCHAR" property="designerName" />
+    <result column="designer_img_path" jdbcType="VARCHAR" property="designerImgPath" />
+    <result column="designer_introduction" jdbcType="VARCHAR" property="designerIntroduction" />
+    <result column="designer_style" jdbcType="VARCHAR" property="designerStyle" />
+    <result column="fields" jdbcType="VARCHAR" property="fields" />
+    <result column="fields1" jdbcType="INTEGER" property="fields1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    designer_id, designer_name, designer_img_path, designer_introduction, designer_style, 
+    `fields`, fields1
+  </sql>
+
+  <!-- 查询Designer根据CompanyId-->
+  <select id="selectDesignerByCompanyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT DISTINCT dr.designer_img_path, dr.designer_name, dr.fields1,dr.designer_id
+    FROM design d JOIN designer dr
+    ON d.design_designer_id = dr.designer_id
+    WHERE d.design_company_id=#{companyId,jdbcType=INTEGER}
+</select>
+
+  <!--根据方案id到设计师 -->
+  <select id="selectDesignerByDesignId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from design JOIN designer
+    ON design.design_designer_id=designer.designer_id
+    WHERE design.design_id=#{designId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 1.根据主键查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from designer
+    where designer_id = #{designerId,jdbcType=INTEGER}
+  </select>
+
+  <!-- 2.根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from designer
+    where designer_id = #{designerId,jdbcType=INTEGER}
+  </delete>
+
+  <!-- 3.插入数据 -->
+  <insert id="insert" parameterType="com.chixing.entity.Designer">
+    insert into designer (designer_id, designer_name, designer_img_path, 
+      designer_introduction, designer_style, `fields`, 
+      fields1)
+    values (#{designerId,jdbcType=INTEGER}, #{designerName,jdbcType=VARCHAR}, #{designerImgPath,jdbcType=VARCHAR}, 
+      #{designerIntroduction,jdbcType=VARCHAR}, #{designerStyle,jdbcType=VARCHAR}, #{fields,jdbcType=VARCHAR}, 
+      #{fields1,jdbcType=INTEGER})
+  </insert>
+
+  <!-- 4.更新数据 -->
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Designer">
+    update designer
+    set designer_name = #{designerName,jdbcType=VARCHAR},
+      designer_img_path = #{designerImgPath,jdbcType=VARCHAR},
+      designer_introduction = #{designerIntroduction,jdbcType=VARCHAR},
+      designer_style = #{designerStyle,jdbcType=VARCHAR},
+      `fields` = #{fields,jdbcType=VARCHAR},
+      fields1 = #{fields1,jdbcType=INTEGER}
+    where designer_id = #{designerId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Designer">
+    insert into designer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="designerId != null">
+        designer_id,
+      </if>
+      <if test="designerName != null">
+        designer_name,
+      </if>
+      <if test="designerImgPath != null">
+        designer_img_path,
+      </if>
+      <if test="designerIntroduction != null">
+        designer_introduction,
+      </if>
+      <if test="designerStyle != null">
+        designer_style,
+      </if>
+      <if test="fields != null">
+        `fields`,
+      </if>
+      <if test="fields1 != null">
+        fields1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="designerId != null">
+        #{designerId,jdbcType=INTEGER},
+      </if>
+      <if test="designerName != null">
+        #{designerName,jdbcType=VARCHAR},
+      </if>
+      <if test="designerImgPath != null">
+        #{designerImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="designerIntroduction != null">
+        #{designerIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="designerStyle != null">
+        #{designerStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="fields != null">
+        #{fields,jdbcType=VARCHAR},
+      </if>
+      <if test="fields1 != null">
+        #{fields1,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Designer">
+    update designer
+    <set>
+      <if test="designerName != null">
+        designer_name = #{designerName,jdbcType=VARCHAR},
+      </if>
+      <if test="designerImgPath != null">
+        designer_img_path = #{designerImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="designerIntroduction != null">
+        designer_introduction = #{designerIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="designerStyle != null">
+        designer_style = #{designerStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="fields != null">
+        `fields` = #{fields,jdbcType=VARCHAR},
+      </if>
+      <if test="fields1 != null">
+        fields1 = #{fields1,jdbcType=INTEGER},
+      </if>
+    </set>
+    where designer_id = #{designerId,jdbcType=INTEGER}
+  </update>
+</mapper>

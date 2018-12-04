@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.RaidersMapper">
+  <cache />
+
+  <select id="selectByExample" parameterType="com.chixing.entity.RaidersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from reiders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from raiders
+    where raiders_id = #{raidersId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectRaidersAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from raiders
+  </select>
+
+  <select id="selectRaidersAllCount" resultType="java.lang.Integer">
+    select count(raiders_id)
+    from raiders
+  </select>
+
+  <!--分页查询商品 -->
+  <select id="selectRaidersAllByPage" parameterType="com.chixing.util.RaidersPageModel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from raiders
+    limit #{startRecord} , #{pageSize}
+  </select>
+
+
+  <!-- 查询点赞数前八的攻略 -->
+  <select id="selectEightRaiders" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM raiders
+    ORDER BY raiders_praise DESC
+    limit 0,8
+  </select>
+
+  <select id="selectFourRaiders" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM raiders
+    limit 0,4
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reiders
+    where raiders_id = #{raidersId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.chixing.entity.Raiders">
+    insert into reiders (raiders_id, raiders_title, raiders_img_path, 
+      raiders_introduce, raiders_content1, raiders_content2, 
+      raiders_content3, raiders_content4, raiders_date, 
+      raiders_praise, collect_number)
+    values (#{raidersId,jdbcType=INTEGER}, #{raidersTitle,jdbcType=VARCHAR}, #{raidersImgPath,jdbcType=VARCHAR}, 
+      #{raidersIntroduce,jdbcType=VARCHAR}, #{raidersContent1,jdbcType=VARCHAR}, #{raidersContent2,jdbcType=VARCHAR}, 
+      #{raidersContent3,jdbcType=VARCHAR}, #{raidersContent4,jdbcType=VARCHAR}, #{raidersDate,jdbcType=TIMESTAMP}, 
+      #{raidersPraise,jdbcType=INTEGER}, #{collectNumber,jdbcType=INTEGER})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.Raiders">
+    update raiders
+    set raiders_title = #{raidersTitle,jdbcType=VARCHAR},
+      raiders_img_path = #{raidersImgPath,jdbcType=VARCHAR},
+      raiders_introduce = #{raidersIntroduce,jdbcType=VARCHAR},
+      raiders_content1 = #{raidersContent1,jdbcType=VARCHAR},
+      raiders_content2 = #{raidersContent2,jdbcType=VARCHAR},
+      raiders_content3 = #{raidersContent3,jdbcType=VARCHAR},
+      raiders_content4 = #{raidersContent4,jdbcType=VARCHAR},
+      raiders_date = #{raidersDate,jdbcType=TIMESTAMP},
+      raiders_praise = #{raidersPraise,jdbcType=INTEGER},
+      collect_number = #{collectNumber,jdbcType=INTEGER}
+    where raiders_id = #{raidersId,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="com.chixing.entity.Raiders">
+    <id column="raiders_id" jdbcType="INTEGER" property="raidersId" />
+    <result column="raiders_title" jdbcType="VARCHAR" property="raidersTitle" />
+    <result column="raiders_img_path" jdbcType="VARCHAR" property="raidersImgPath" />
+    <result column="raiders_introduce" jdbcType="VARCHAR" property="raidersIntroduce" />
+    <result column="raiders_content1" jdbcType="VARCHAR" property="raidersContent1" />
+    <result column="raiders_content2" jdbcType="VARCHAR" property="raidersContent2" />
+    <result column="raiders_content3" jdbcType="VARCHAR" property="raidersContent3" />
+    <result column="raiders_content4" jdbcType="VARCHAR" property="raidersContent4" />
+    <result column="raiders_date" jdbcType="TIMESTAMP" property="raidersDate" />
+    <result column="raiders_praise" jdbcType="INTEGER" property="raidersPraise" />
+    <result column="collect_number" jdbcType="INTEGER" property="collectNumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    raiders_id, raiders_title, raiders_img_path, raiders_introduce, raiders_content1,
+    raiders_content2, raiders_content3, raiders_content4, raiders_date, raiders_praise, collect_number
+  </sql>
+
+  <insert id="insertSelective" parameterType="com.chixing.entity.Raiders">
+    insert into reiders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="raidersId != null">
+        raiders_id,
+      </if>
+      <if test="raidersTitle != null">
+        raiders_title,
+      </if>
+      <if test="raidersImgPath != null">
+        raiders_img_path,
+      </if>
+      <if test="raidersIntroduce != null">
+        raiders_introduce,
+      </if>
+      <if test="raidersContent1 != null">
+        raiders_content1,
+      </if>
+      <if test="raidersContent2 != null">
+        raiders_content2,
+      </if>
+      <if test="raidersContent3 != null">
+        raiders_content3,
+      </if>
+      <if test="raidersContent4 != null">
+        raiders_content4,
+      </if>
+      <if test="raidersDate != null">
+        raiders_date,
+      </if>
+      <if test="raidersPraise != null">
+        fields1,
+      </if>
+      <if test="collectNumber != null">
+        fields2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="raidersId != null">
+        #{raidersId,jdbcType=INTEGER},
+      </if>
+      <if test="raidersTitle != null">
+        #{raidersTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersImgPath != null">
+        #{raidersImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersIntroduce != null">
+        #{raidersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent1 != null">
+        #{raidersContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent2 != null">
+        #{raidersContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent3 != null">
+        #{raidersContent3,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent4 != null">
+        #{raidersContent4,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersDate != null">
+        #{raidersDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="raidersPraise != null">
+        #{fields1,jdbcType=INTEGER},
+      </if>
+      <if test="collectNumber != null">
+        #{fields2,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chixing.entity.RaidersExample" resultType="java.lang.Long">
+    select count(*) from reiders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update reiders
+    <set>
+      <if test="record.raidersId != null">
+        raiders_id = #{record.raidersId,jdbcType=INTEGER},
+      </if>
+      <if test="record.raidersTitle != null">
+        raiders_title = #{record.raidersTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersImgPath != null">
+        raiders_img_path = #{record.raidersImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersIntroduce != null">
+        raiders_introduce = #{record.raidersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersContent1 != null">
+        raiders_content1 = #{record.raidersContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersContent2 != null">
+        raiders_content2 = #{record.raidersContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersContent3 != null">
+        raiders_content3 = #{record.raidersContent3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersContent4 != null">
+        raiders_content4 = #{record.raidersContent4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.raidersDate != null">
+        raiders_date = #{record.raidersDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fields1 != null">
+        fields1 = #{record.fields1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fields2 != null">
+        fields2 = #{record.fields2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update reiders
+    set raiders_id = #{record.raidersId,jdbcType=INTEGER},
+    raiders_title = #{record.raidersTitle,jdbcType=VARCHAR},
+    raiders_img_path = #{record.raidersImgPath,jdbcType=VARCHAR},
+    raiders_introduce = #{record.raidersIntroduce,jdbcType=VARCHAR},
+    raiders_content1 = #{record.raidersContent1,jdbcType=VARCHAR},
+    raiders_content2 = #{record.raidersContent2,jdbcType=VARCHAR},
+    raiders_content3 = #{record.raidersContent3,jdbcType=VARCHAR},
+    raiders_content4 = #{record.raidersContent4,jdbcType=VARCHAR},
+    raiders_date = #{record.raidersDate,jdbcType=TIMESTAMP},
+    fields1 = #{record.fields1,jdbcType=VARCHAR},
+    fields2 = #{record.fields2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.Raiders">
+    update reiders
+    <set>
+      <if test="raidersTitle != null">
+        raiders_title = #{raidersTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersImgPath != null">
+        raiders_img_path = #{raidersImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersIntroduce != null">
+        raiders_introduce = #{raidersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent1 != null">
+        raiders_content1 = #{raidersContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent2 != null">
+        raiders_content2 = #{raidersContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent3 != null">
+        raiders_content3 = #{raidersContent3,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersContent4 != null">
+        raiders_content4 = #{raidersContent4,jdbcType=VARCHAR},
+      </if>
+      <if test="raidersDate != null">
+        raiders_date = #{raidersDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fields1 != null">
+        fields1 = #{fields1,jdbcType=VARCHAR},
+      </if>
+      <if test="fields2 != null">
+        fields2 = #{fields2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where raiders_id = #{raidersId,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByExample" parameterType="com.chixing.entity.RaidersExample">
+    delete from reiders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+</mapper>

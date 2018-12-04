@@ -1,0 +1,335 @@
+a{
+    text-decoration: none;
+}
+
+#raiders-body{
+    width: 1100px;
+    height: 1400px;
+    margin: 0px auto;
+    background: #F5F5F5;
+}
+
+#nav-body{
+    width: 1098px;
+    height: 80px;
+    background-color: white;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+.logo{
+    width: 250px;
+    height: 80px;
+    float: left;
+    margin: 1px 0px 0px 40px;
+    float: left;
+}
+
+.nav-content{
+    float: left;
+    width: 450px;
+    height: 80px;
+}
+
+.nav-content ul{
+    width: 450px;
+    height: 80px;
+    list-style: none;
+}
+
+.nav-content ul li{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+    margin-top: 25px;
+
+}
+
+.nav-content ul li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: gray;
+}
+
+.nav-content ul li a:hover{
+    color: #3AC569;
+    font-weight: bold;
+    font-family: simsun;
+}
+
+.search-body{
+    width: 300px;
+    height: 42px;
+    float: left;
+    margin: 25px 0px 0px 50px;
+}
+
+.form-control{
+    width: 220px;
+    height: 40px;
+    font-size: 13px;
+    line-height: 40px;
+    color: gray;
+    float: left;
+}
+
+#searcherButton{
+    width: 60px;
+    height: 40px;
+    float: left;
+}
+
+
+#demo , .carousel-inner img {
+    width: 1098px;
+    height: 280px;
+}
+
+#major-body{
+    width: 1098px;
+    height: 1000px;
+    background: #F5F5F5;
+}
+
+.left{
+    width: 255px;
+    height: 650px;
+    float: left;
+    margin: 30px 0px 0px 10px;
+}
+
+.raiders-article{
+    width: 250px;
+    height: 80px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 80px;
+    font-family: simsun;
+    font-weight: bold;
+}
+
+.article-li,.article-li ol{
+    width: 250PX;
+    height: 570px;
+    margin-top: -20px;
+}
+
+.article-li ol {
+    margin-left: 20px;
+}
+
+.article-li ol a li{
+    width: 200px;
+    height: 60px;
+    margin-top: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.article-li ol a{
+    text-decoration: none;
+    color:gray;
+}
+
+.advertise{
+    width: 235px;
+    height: 235px;
+    margin: 20px 0px 0px 10px;
+}
+
+.right{
+    width: 820px;
+    height: 1040px;
+    float: left;
+    margin-left: 10px;
+    border-left: 1px solid lightgray;
+}
+
+.raiders-category{
+    width: 200px;
+    height: 50px;
+    margin: 10px 0px 0px 30px;
+}
+
+.raiders-category span{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 30px;
+    font-family: simhei;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.raiders-right{
+    width: 780px;
+    height: 860px;
+    margin: 15px 0px 0px 35px;
+}
+
+
+.right ul{
+    list-style: none;
+}
+
+.right ul li{
+    width: 790px;
+    height: 200px;
+    margin-top: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.right ul li img{
+    margin-top: 20px;
+}
+
+.raiders-images,.raiders-info{
+    float: left;
+}
+
+.raiders-images,.raiders-info a{
+    color: black;
+    text-decoration: none;
+}
+
+.raiders-images {
+    width: 240px;
+    height: 200px;
+}
+
+.raiders-info{
+    width: 522px;
+    height: 200px;
+    margin-left: 15px;
+}
+
+.raiders-title{
+    width: 522px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+}
+
+.raiders-content{
+    width: 510px;
+    height: 100px;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.raiders-content a{
+    text-decoration: none;
+    color: #3AC569;
+}
+
+.date-time{
+    width: 250px;
+    height: 30px;
+    margin-top: 6px;
+}
+
+/* ------------分页------------- */
+.page-split{
+    width: 825px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.page-split .one-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 120px;
+}
+
+.one-span a , .first-span a, .three-span a , .finally-span a , .page-split .two-span b a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-split .first-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span{
+    display: block;
+    width: 125px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .two-span label{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    float: left;
+
+}
+
+.page-split .two-span  b{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: -15px;
+}
+
+.page-split .two-span  b a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.page-split .three-span{
+    display: inline-block;
+    width: 55px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 5px;
+}
+
+.page-split .finally-span{
+    display: block;
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+    float: left;
+    margin: 12px 0px 0px 20px;
+}
+
+.page-split .four-span{
+    display: inline-block;
+    width: 35px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px 20px;
+}
+
+.page-split .page-input{
+    width: 70px;
+    height: 25px;
+    margin: 10px 0px 0px 6px;
+}
+
+
+.page-split .page-button{
+    width: 100px;
+    height: 27px;
+    border: none;
+    background: #3AC569;
+    border-radius: 15px;
+    margin: 10px 0px 0px 20px;
+}

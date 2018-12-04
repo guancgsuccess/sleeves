@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chixing.mapper.RenderingCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.chixing.entity.RenderingCollection">
+    <id column="rendering_collection_id" jdbcType="INTEGER" property="renderingCollectionId" />
+    <result column="client_id" jdbcType="INTEGER" property="clientId" />
+    <result column="rendering_id" jdbcType="INTEGER" property="renderingId" />
+    <result column="rendering_collection_time" jdbcType="TIMESTAMP" property="renderingCollectionTime" />
+    <result column="rendering_collection_status" jdbcType="INTEGER" property="renderingCollectionStatus" />
+    <result column="firlds1" jdbcType="VARCHAR" property="firlds1" />
+    <result column="firlds2" jdbcType="VARCHAR" property="firlds2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rendering_collection_id, client_id, rendering_id, rendering_collection_time, rendering_collection_status, 
+    firlds1, firlds2
+  </sql>
+  <select id="selectByExample" parameterType="com.chixing.entity.RenderingCollectionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rendering_collection
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rendering_collection
+    where rendering_collection_id = #{renderingCollectionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rendering_collection
+    where rendering_collection_id = #{renderingCollectionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chixing.entity.RenderingCollectionExample">
+    delete from rendering_collection
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chixing.entity.RenderingCollection">
+    insert into rendering_collection (rendering_collection_id, client_id, 
+      rendering_id, rendering_collection_time, 
+      rendering_collection_status, firlds1, firlds2
+      )
+    values (#{renderingCollectionId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{renderingId,jdbcType=INTEGER}, #{renderingCollectionTime,jdbcType=TIMESTAMP}, 
+      #{renderingCollectionStatus,jdbcType=INTEGER}, #{firlds1,jdbcType=VARCHAR}, #{firlds2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chixing.entity.RenderingCollection">
+    insert into rendering_collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="renderingCollectionId != null">
+        rendering_collection_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="renderingId != null">
+        rendering_id,
+      </if>
+      <if test="renderingCollectionTime != null">
+        rendering_collection_time,
+      </if>
+      <if test="renderingCollectionStatus != null">
+        rendering_collection_status,
+      </if>
+      <if test="firlds1 != null">
+        firlds1,
+      </if>
+      <if test="firlds2 != null">
+        firlds2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="renderingCollectionId != null">
+        #{renderingCollectionId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingId != null">
+        #{renderingId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingCollectionTime != null">
+        #{renderingCollectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="renderingCollectionStatus != null">
+        #{renderingCollectionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="firlds1 != null">
+        #{firlds1,jdbcType=VARCHAR},
+      </if>
+      <if test="firlds2 != null">
+        #{firlds2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chixing.entity.RenderingCollectionExample" resultType="java.lang.Long">
+    select count(*) from rendering_collection
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rendering_collection
+    <set>
+      <if test="record.renderingCollectionId != null">
+        rendering_collection_id = #{record.renderingCollectionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.clientId != null">
+        client_id = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.renderingId != null">
+        rendering_id = #{record.renderingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.renderingCollectionTime != null">
+        rendering_collection_time = #{record.renderingCollectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.renderingCollectionStatus != null">
+        rendering_collection_status = #{record.renderingCollectionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.firlds1 != null">
+        firlds1 = #{record.firlds1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firlds2 != null">
+        firlds2 = #{record.firlds2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rendering_collection
+    set rendering_collection_id = #{record.renderingCollectionId,jdbcType=INTEGER},
+      client_id = #{record.clientId,jdbcType=INTEGER},
+      rendering_id = #{record.renderingId,jdbcType=INTEGER},
+      rendering_collection_time = #{record.renderingCollectionTime,jdbcType=TIMESTAMP},
+      rendering_collection_status = #{record.renderingCollectionStatus,jdbcType=INTEGER},
+      firlds1 = #{record.firlds1,jdbcType=VARCHAR},
+      firlds2 = #{record.firlds2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chixing.entity.RenderingCollection">
+    update rendering_collection
+    <set>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingId != null">
+        rendering_id = #{renderingId,jdbcType=INTEGER},
+      </if>
+      <if test="renderingCollectionTime != null">
+        rendering_collection_time = #{renderingCollectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="renderingCollectionStatus != null">
+        rendering_collection_status = #{renderingCollectionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="firlds1 != null">
+        firlds1 = #{firlds1,jdbcType=VARCHAR},
+      </if>
+      <if test="firlds2 != null">
+        firlds2 = #{firlds2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rendering_collection_id = #{renderingCollectionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chixing.entity.RenderingCollection">
+    update rendering_collection
+    set client_id = #{clientId,jdbcType=INTEGER},
+      rendering_id = #{renderingId,jdbcType=INTEGER},
+      rendering_collection_time = #{renderingCollectionTime,jdbcType=TIMESTAMP},
+      rendering_collection_status = #{renderingCollectionStatus,jdbcType=INTEGER},
+      firlds1 = #{firlds1,jdbcType=VARCHAR},
+      firlds2 = #{firlds2,jdbcType=VARCHAR}
+    where rendering_collection_id = #{renderingCollectionId,jdbcType=INTEGER}
+  </update>
+</mapper>
